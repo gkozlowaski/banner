@@ -2,14 +2,13 @@ import storefront from 'storefront';
 import React from 'react';
 import connectToStores from 'utils/connectToStores';
 
-const stores = [
+@connectToStores([
   storefront.flux.stores.ShopStore,
   storefront.flux.stores.ComponentStore
-];
-
-let Banner = React.createClass({
+])
+class Banner extends React.Component {
   render() {
-    const component = this.props.ComponentStore.toJS()[this.props.route][this.props.id];
+    const component = this.props.ComponentStore.get(this.props.route).get(this.props.id).toJS();
     if (!component) {
       return null;
     }
@@ -20,6 +19,6 @@ let Banner = React.createClass({
       </div>
     );
   }
-});
+}
 
-export default connectToStores(stores)(Banner);
+export default Banner;
