@@ -182,7 +182,11 @@
 	    value: function onClickContainer() {
 	      var editMode = this.props.EditorStore.get('edit');
 	      if (editMode) {
-	        _storefront2['default'].flux.actions.EditorActions.openAdmin('BannerAdmin');
+	        _storefront2['default'].flux.actions.EditorActions.openAdmin({
+	          component: 'BannerAdmin',
+	          route: this.props.route,
+	          id: this.props.id
+	        });
 	      }
 	    }
 	  }, {

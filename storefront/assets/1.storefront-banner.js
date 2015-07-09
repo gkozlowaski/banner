@@ -32,10 +32,13 @@ webpackJsonp([1],{
 	var _utilsConnectToStores2 = _interopRequireDefault(_utilsConnectToStores);
 	
 	var BannerAdmin = (function (_React$Component) {
-	  function BannerAdmin() {
+	  function BannerAdmin(props) {
 	    _classCallCheck(this, _BannerAdmin);
 	
-	    _get(Object.getPrototypeOf(_BannerAdmin.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(_BannerAdmin.prototype), 'constructor', this).call(this, props);
+	    this.state = {
+	      url: props.ComponentStore.get(this.props.route).get(this.props.id).get('settings').get('url')
+	    };
 	  }
 	
 	  _inherits(BannerAdmin, _React$Component);
@@ -43,8 +46,20 @@ webpackJsonp([1],{
 	  var _BannerAdmin = BannerAdmin;
 	
 	  _createClass(_BannerAdmin, [{
+	    key: 'changeUrl',
+	    value: function changeUrl(e) {
+	      this.setState({ url: e.target.value });
+	    }
+	  }, {
 	    key: 'onClickSave',
 	    value: function onClickSave() {
+	      _storefront2['default'].flux.actions.ComponentActions.saveSettings({
+	        accountName: 'basedevmkp',
+	        route: this.props.route,
+	        component: 'Banner@vtex.storefront-banner',
+	        id: this.props.id,
+	        settings: this.state
+	      });
 	      _storefront2['default'].flux.actions.EditorActions.closeAdmin();
 	    }
 	  }, {
@@ -58,6 +73,7 @@ webpackJsonp([1],{
 	          null,
 	          'banner admin, fera!'
 	        ),
+	        _react2['default'].createElement('input', { type: 'text', value: this.state.url, onChange: this.changeUrl.bind(this) }),
 	        _react2['default'].createElement(
 	          'button',
 	          { onClick: this.onClickSave.bind(this) },

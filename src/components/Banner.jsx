@@ -11,7 +11,11 @@ class Banner extends React.Component {
   onClickContainer() {
     const editMode = this.props.EditorStore.get('edit');
     if (editMode) {
-      storefront.flux.actions.EditorActions.openAdmin('BannerAdmin');
+      storefront.flux.actions.EditorActions.openAdmin({
+        component: 'BannerAdmin',
+        route: this.props.route,
+        id: this.props.id
+      });
     }
   }
 
