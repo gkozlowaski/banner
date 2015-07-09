@@ -123,20 +123,23 @@
 	  _createClass(_Banner, [{
 	    key: 'render',
 	    value: function render() {
+	      var editMode = this.props.EditorStore.get('edit');
 	      var component = this.props.ComponentStore.get(this.props.route).get(this.props.id).toJS();
+	      var containerStyle = editMode ? { backgroundColor: 'rgba(0,0,200,0.5)' } : {};
+	      var imageStyle = editMode ? { opacity: '0.2' } : {};
 	      if (!component) {
 	        return null;
 	      }
 	      var src = component.settings.url;
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'storefront-banner' },
-	        _react2['default'].createElement('img', { src: src })
+	        { style: containerStyle, className: 'storefront-banner' },
+	        _react2['default'].createElement('img', { style: imageStyle, src: src })
 	      );
 	    }
 	  }]);
 	
-	  Banner = (0, _utilsConnectToStores2['default'])([_storefront2['default'].flux.stores.ShopStore, _storefront2['default'].flux.stores.ComponentStore])(Banner) || Banner;
+	  Banner = (0, _utilsConnectToStores2['default'])([_storefront2['default'].flux.stores.ShopStore, _storefront2['default'].flux.stores.ComponentStore, _storefront2['default'].flux.stores.EditorStore])(Banner) || Banner;
 	  return Banner;
 	})(_react2['default'].Component);
 	
