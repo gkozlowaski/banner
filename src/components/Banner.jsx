@@ -8,17 +8,23 @@ import connectToStores from 'utils/connectToStores';
   storefront.flux.stores.EditorStore
 ])
 class Banner extends React.Component {
+  onClickContainer() {
+    const editMode = this.props.EditorStore.get('edit');
+    if (editMode) {
+      storefront.flux.actions.EditorActions.openAdmin('BannerAdmin');
+    }
+  }
+
   render() {
     const editMode = this.props.EditorStore.get('edit');
     const component = this.props.ComponentStore.get(this.props.route).get(this.props.id).toJS();
-    const containerStyle = editMode ? { backgroundColor: 'rgba(0,0,200,0.5)' } : {};
-    const imageStyle = editMode ? { opacity: '0.2' } : {};
+    const imageStyle = editMode ? { backgroundColor: 'rgba(0,0,200,0.5)', opacity: '0.2' } : {};
     if (!component) {
       return null;
     }
     const src = component.settings.url;
     return (
-      <div style={containerStyle} className="storefront-banner">
+      <div className="storefront-banner" onClick={this.onClickContainer.bind(this)}>
         <img style={imageStyle} src={src}/>
       </div>
     );
