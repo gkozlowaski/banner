@@ -27,13 +27,12 @@ class BannerAdmin extends React.Component {
       id: this.props.id,
       settings: this.state
     });
-    storefront.flux.actions.EditorActions.closeAdmin();
+    storefront.flux.actions.EditorActions.exitEditMode();
   }
 
   render() {
     return (
       <div className="storefront-banner-admin">
-        <p>banner admin, fera!</p>
         <input type="text" value={this.state.url} onChange={this.changeUrl.bind(this)}/>
         <button onClick={this.onClickSave.bind(this)}>Salvar</button>
       </div>
