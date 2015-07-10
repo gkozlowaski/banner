@@ -28,8 +28,8 @@ class Banner extends React.Component {
     }
     const src = component.settings.url;
     return (
-      <div className="storefront-banner" onClick={this.onClickContainer.bind(this)}>
-        <img style={imageStyle} src={src}/>
+      <div className="storefront-banner" style={{width: '100%'}} onClick={this.onClickContainer.bind(this)}>
+        <img style={imageStyle} src={src} width="100%"/>
       </div>
     );
   }

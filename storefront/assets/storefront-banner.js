@@ -201,8 +201,8 @@
 	      var src = component.settings.url;
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'storefront-banner', onClick: this.onClickContainer.bind(this) },
-	        _react2['default'].createElement('img', { style: imageStyle, src: src })
+	        { className: 'storefront-banner', style: { width: '100%' }, onClick: this.onClickContainer.bind(this) },
+	        _react2['default'].createElement('img', { style: imageStyle, src: src, width: '100%' })
 	      );
 	    }
 	  }]);
