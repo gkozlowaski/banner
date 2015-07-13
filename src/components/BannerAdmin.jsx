@@ -10,8 +10,10 @@ import connectToStores from 'utils/connectToStores';
 class BannerAdmin extends React.Component {
   constructor(props) {
     super(props);
+    let config = props.ComponentStore.getIn([this.props.route, this.props.id, 'settings']);
+
     this.state = {
-      url: props.ComponentStore.getIn([this.props.route, this.props.id, 'settings', 'url'])
+      url: config.get('url')
     };
   }
 
