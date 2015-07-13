@@ -11,7 +11,7 @@ class BannerAdmin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: props.ComponentStore.get(this.props.route).get(this.props.id).get('settings').get('url')
+      url: props.ComponentStore.getIn([this.props.route, this.props.id, 'settings', 'url'])
     };
   }
 

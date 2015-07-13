@@ -21,7 +21,7 @@ class Banner extends React.Component {
 
   render() {
     const editMode = this.props.EditorStore.get('edit');
-    const component = this.props.ComponentStore.get(this.props.route).get(this.props.id).toJS();
+    const component = this.props.ComponentStore.getIn([this.props.route, this.props.id]).toJS();
     const imageStyle = editMode ? { backgroundColor: 'rgba(0,0,200,0.5)', opacity: '0.2' } : {};
     if (!component) {
       return null;
