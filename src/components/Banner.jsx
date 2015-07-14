@@ -27,8 +27,8 @@ class Banner extends React.Component {
     const src = component.settings.url;
 
     let classes = classNames(
-      'vtex-storefront-banner',
-      { 'vtex-storefront-banner--edit': editMode }
+      'v-banner',
+      { 'v-banner--edit': editMode }
     );
 
     if (!component) {
