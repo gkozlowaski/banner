@@ -11,7 +11,7 @@ import style from '../style/Banner.less'; // eslint-disable-line
 ])
 class Banner extends React.Component {
   onClickContainer() {
-    const editMode = this.props.EditorStore.get('edit');
+    const editMode = this.props.EditorStore.get('currentMode') === 'edit';
     if (editMode) {
       storefront.flux.actions.EditorActions.openAdmin({
         component: 'BannerAdmin',
@@ -22,7 +22,7 @@ class Banner extends React.Component {
   }
 
   render() {
-    const editMode = this.props.EditorStore.get('edit');
+    const editMode = this.props.EditorStore.get('currentMode') === 'edit';
     const component = this.props.ComponentStore.getIn([this.props.route, this.props.id]).toJS();
     const src = component.settings.url;
 
