@@ -29,7 +29,7 @@ class BannerAdmin extends React.Component {
       id: this.props.id,
       settings: this.state
     });
-    storefront.flux.actions.EditorActions.exitEditMode();
+    storefront.flux.actions.EditorActions.closeAdmin();
   }
 
   render() {
