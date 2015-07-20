@@ -1,13 +1,16 @@
 import storefront from 'storefront';
 import React from 'react';
-import connectToStores from 'utils/connectToStores';
+let connectToStores = storefront.import('connectToStores');
 
 @connectToStores([
   storefront.flux.stores.ShopStore,
-  storefront.flux.stores.ComponentStore,
-  storefront.flux.stores.EditorStore
+  storefront.flux.stores.ComponentStore
 ])
-class BannerAdmin extends React.Component {
+class BannerEditor extends React.Component {
+  static storefront = {
+    id: 'BannerEditor'
+  }
+
   constructor(props) {
     super(props);
     let config = props.ComponentStore.getIn([this.props.route, this.props.id, 'settings']);
@@ -17,13 +20,13 @@ class BannerAdmin extends React.Component {
     };
   }
 
-  changeUrl(e) {
+  changeUrl = (e) => {
     this.setState({ url: e.target.value });
   }
 
-  onClickSave() {
+  onClickSave = () => {
     storefront.flux.actions.ComponentActions.saveSettings({
-      accountName: 'basedevmkp',
+      accountName: this.props.ShopStore.get('accountName'),
       route: this.props.route,
       component: 'Banner@vtex.storefront-banner',
       id: this.props.id,
@@ -35,11 +38,11 @@ class BannerAdmin extends React.Component {
   render() {
     return (
       <div className="storefront-banner-admin">
-        <input type="text" value={this.state.url} onChange={this.changeUrl.bind(this)}/>
-        <button onClick={this.onClickSave.bind(this)}>Salvar</button>
+        <input type="text" value={this.state.url} onChange={this.changeUrl}/>
+        <button onClick={this.onClickSave}>Salvar</button>
       </div>
     );
   }
 }
 
-export default BannerAdmin;
+export default BannerEditor;

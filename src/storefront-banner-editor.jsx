@@ -1,7 +1,7 @@
 import storefront from 'storefront';
-import Banner from 'components/Banner';
+import Banner from 'editos/BannerEditor';
 
-storefront.export('Banner', Banner);
+storefront.export('BannerEditor', Banner);
 
 // Enable react hot loading with external React
 // see https://github.com/gaearon/react-hot-loader/tree/master/docs#usage-with-external-react

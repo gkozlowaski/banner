@@ -2,7 +2,8 @@ var webpack = require('webpack');
 var path = require('path');
 var nodeModulesDir = path.join(__dirname, 'node_modules');
 var pkg = require('./package.json');
-var publicPath = '/assets/@vtex.' + pkg.name + '/';
+var meta = require('./meta.json');
+var publicPath = '/assets/@' + meta.vendor + '.' + pkg.name + '/';
 var production = process.env.NODE_ENV === 'production';
 var hot = process.env.NODE_ENV === 'hot';
 
@@ -11,13 +12,15 @@ module.exports = {
 
   watch: production ? false : true,
 
-  entry: hot ? [
-    'webpack-dev-server/client?http://0.0.0.0:3000',
-    'webpack/hot/only-dev-server',
-    './src/' + pkg.name + '.jsx'
-  ] : [
-    './src/' + pkg.name + '.jsx'
-  ],
+  entry: hot ? {
+    '.': ['webpack-dev-server/client?http://0.0.0.0:3000',
+              'webpack/hot/only-dev-server',
+              './' + pkg.name + '.jsx'],
+    editor: './' + pkg.name + '-editor.jsx'
+  } : {
+    '.': './src/' + pkg.name + '.jsx',
+    editor: './src/' + pkg.name + '-editor.jsx'
+  },
 
   externals: {
     'storefront': 'storefront',
@@ -30,6 +33,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
+      'editors': path.join(__dirname, '/src/editors/'),
       'components': path.join(__dirname, '/src/components/'),
       'pages': path.join(__dirname, '/src/pages/'),
       'styles': path.join(__dirname, '/src/styles/'),
@@ -40,7 +44,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './storefront/assets/'),
     publicPath: publicPath,
-    filename: pkg.name + '.js'
+    filename: '[name]/' + pkg.name + '.js',
+    chunkFilename: pkg.name + '-[name].js',
+    devtoolModuleFilenameTemplate: 'webpack:///' + pkg.name + '/[resource]?[hash][id]'
   },
 
   jshint: {
