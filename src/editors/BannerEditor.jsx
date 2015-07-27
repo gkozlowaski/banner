@@ -31,10 +31,13 @@ class BannerEditor extends React.Component {
   }
 
   render() {
+    let ActionBar = this.props.actionBar;
+
     return (
       <div className="storefront-banner-admin">
         <input type="text" value={this.state.url} onChange={this.changeUrl}/>
-        <button onClick={this.onClickSave}>Salvar</button>
+
+        <ActionBar onSave={this.onClickSave}/>
       </div>
     );
   }
