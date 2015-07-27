@@ -6,10 +6,6 @@ import { dispatcher, connectToStores } from 'sdk';
   dispatcher.stores.SettingsStore
 ])
 class BannerEditor extends React.Component {
-  static storefront = {
-    id: 'BannerEditor'
-  }
-
   constructor(props) {
     super(props);
     let config = props.SettingsStore.getIn([this.props.route, this.props.id, 'settings']);
@@ -24,14 +20,14 @@ class BannerEditor extends React.Component {
   }
 
   onClickSave = () => {
-    dispatcher.actions.ComponentActions.saveSettings({
+    dispatcher.actions.SettingsActions.saveComponent({
       accountName: this.props.ShopStore.get('accountName'),
       route: this.props.route,
       component: 'Banner@vtex.storefront-banner',
       id: this.props.id,
       settings: this.state
     });
-    dispatcher.actions.EditorActions.closeAdmin();
+    dispatcher.actions.EditorActions.closeEditor();
   }
 
   render() {

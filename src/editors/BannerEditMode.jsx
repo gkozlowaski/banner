@@ -7,12 +7,8 @@ import style from '../style/Banner.less'; // eslint-disable-line
   dispatcher.stores.SettingsStore
 ])
 class BannerEditMode extends React.Component {
-  static storefront = {
-    id: 'BannerEditMode'
-  }
-
   onClickContainer = () => {
-    dispatcher.actions.EditorActions.openAdmin({
+    dispatcher.actions.EditorActions.openEditor({
       component: 'BannerEditor',
       route: this.props.route,
       id: this.props.id

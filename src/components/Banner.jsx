@@ -14,7 +14,7 @@ class Banner extends React.Component {
   }
 
   render() {
-    const editMode = this.props.EditorStore.get('activeMode') === 'edit';
+    const editMode = this.props.EditorStore.get('isActive');
     const EditComponent = this.props.ComponentStore.getIn(['BannerEditMode', 'constructor']);
     if (editMode && EditComponent) {
       return <EditComponent {...this.props}/>;
