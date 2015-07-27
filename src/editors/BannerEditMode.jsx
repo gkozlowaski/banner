@@ -1,11 +1,10 @@
-import storefront from 'storefront';
 import React from 'react';
-let connectToStores = storefront.import('connectToStores');
+import { dispatcher, connectToStores } from 'sdk';
 import classNames from 'classnames';
 import style from '../style/Banner.less'; // eslint-disable-line
 
 @connectToStores([
-  storefront.flux.stores.ComponentStore
+  dispatcher.stores.SettingsStore
 ])
 class BannerEditMode extends React.Component {
   static storefront = {
@@ -13,7 +12,7 @@ class BannerEditMode extends React.Component {
   }
 
   onClickContainer = () => {
-    storefront.flux.actions.EditorActions.openAdmin({
+    dispatcher.actions.EditorActions.openAdmin({
       component: 'BannerEditor',
       route: this.props.route,
       id: this.props.id
@@ -21,19 +20,18 @@ class BannerEditMode extends React.Component {
   }
 
   render() {
-    const component = this.props.ComponentStore.getIn([this.props.route, this.props.id]).toJS();
-    const src = component.settings.url;
+    const component = this.props.SettingsStore.getIn([this.props.route, this.props.id]);
 
     let classes = classNames(
       'v-banner', 'v-banner--edit'
     );
 
     if (!component) {
-      return null;
+      return <div>Oi</div>;
     }
     return (
       <div className={classes} onClick={this.onClickContainer}>
-        <img src={src} width="100%"/>
+        <img src={component.getIn(['settings', 'url'])} width="100%"/>
       </div>
     );
   }

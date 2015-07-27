@@ -1,11 +1,11 @@
-import storefront from 'storefront';
 import React from 'react';
-let connectToStores = storefront.import('connectToStores');
+import { dispatcher, connectToStores } from 'sdk';
 import style from '../style/Banner.less'; // eslint-disable-line
 
 @connectToStores([
-  storefront.flux.stores.ComponentStore,
-  storefront.flux.stores.EditorStore
+  dispatcher.stores.SettingsStore,
+  dispatcher.stores.ComponentStore,
+  dispatcher.stores.EditorStore
 ])
 class Banner extends React.Component {
   static storefront = {
@@ -15,20 +15,19 @@ class Banner extends React.Component {
 
   render() {
     const editMode = this.props.EditorStore.get('activeMode') === 'edit';
-    if (editMode && storefront.import('BannerEditMode')) {
-      let EditComponent = storefront.import('BannerEditMode');
+    const EditComponent = this.props.ComponentStore.getIn(['BannerEditMode', 'constructor']);
+    if (editMode && EditComponent) {
       return <EditComponent {...this.props}/>;
     }
 
-    const component = this.props.ComponentStore.getIn([this.props.route, this.props.id]).toJS();
-    const src = component.settings.url;
+    const component = this.props.SettingsStore.getIn([this.props.route, this.props.id]);
 
     if (!component) {
       return null;
     }
     return (
       <div className="v-banner">
-        <img src={src} width="100%"/>
+        <img src={component.getIn(['settings', 'url'])} width="100%"/>
       </div>
     );
   }

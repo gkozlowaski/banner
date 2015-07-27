@@ -1,7 +1,10 @@
-import storefront from 'storefront';
+import { dispatcher } from 'sdk';
 import Banner from 'components/Banner';
 
-storefront.export('Banner', Banner);
+dispatcher.actions.ComponentActions.register({
+  name: 'Banner',
+  constructor: Banner
+});
 
 // Enable react hot loading with external React
 // see https://github.com/gaearon/react-hot-loader/tree/master/docs#usage-with-external-react

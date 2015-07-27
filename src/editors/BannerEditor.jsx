@@ -1,10 +1,9 @@
-import storefront from 'storefront';
 import React from 'react';
-let connectToStores = storefront.import('connectToStores');
+import { dispatcher, connectToStores } from 'sdk';
 
 @connectToStores([
-  storefront.flux.stores.ShopStore,
-  storefront.flux.stores.ComponentStore
+  dispatcher.stores.ShopStore,
+  dispatcher.stores.SettingsStore
 ])
 class BannerEditor extends React.Component {
   static storefront = {
@@ -13,7 +12,7 @@ class BannerEditor extends React.Component {
 
   constructor(props) {
     super(props);
-    let config = props.ComponentStore.getIn([this.props.route, this.props.id, 'settings']);
+    let config = props.SettingsStore.getIn([this.props.route, this.props.id, 'settings']);
 
     this.state = {
       url: config.get('url')
@@ -25,14 +24,14 @@ class BannerEditor extends React.Component {
   }
 
   onClickSave = () => {
-    storefront.flux.actions.ComponentActions.saveSettings({
+    dispatcher.actions.ComponentActions.saveSettings({
       accountName: this.props.ShopStore.get('accountName'),
       route: this.props.route,
       component: 'Banner@vtex.storefront-banner',
       id: this.props.id,
       settings: this.state
     });
-    storefront.flux.actions.EditorActions.closeAdmin();
+    dispatcher.actions.EditorActions.closeAdmin();
   }
 
   render() {
