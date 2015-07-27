@@ -11,7 +11,7 @@ class BannerEditor extends React.Component {
     let config = props.SettingsStore.getIn([this.props.route, this.props.id, 'settings']);
 
     this.state = {
-      url: config.get('url')
+      url: config ? config.get('url') : null
     };
   }
 
