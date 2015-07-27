@@ -23,7 +23,7 @@ class BannerEditMode extends React.Component {
     );
 
     if (!component) {
-      return <div>Oi</div>;
+      return <div className={classes} onClick={this.onClickContainer}>Set up banner!</div>;
     }
     return (
       <div className={classes} onClick={this.onClickContainer}>
