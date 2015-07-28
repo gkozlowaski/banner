@@ -20,9 +20,12 @@ class Banner extends React.Component {
     if (!component) {
       return null;
     }
+
+    let url = component.getIn(['settings', 'url']);
+
     return (
       <div className="v-banner">
-        <img src={component.getIn(['settings', 'url'])} width="100%"/>
+        <img src={url} width="100%"/>
       </div>
     );
   }
