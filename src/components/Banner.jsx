@@ -8,11 +8,6 @@ import style from '../style/Banner.less'; // eslint-disable-line
   dispatcher.stores.EditorStore
 ])
 class Banner extends React.Component {
-  static storefront = {
-    id: 'Banner',
-    pluggable: true
-  }
-
   render() {
     const editMode = this.props.EditorStore.get('isActive');
     const EditComponent = this.props.ComponentStore.getIn(['BannerEditMode', 'constructor']);
