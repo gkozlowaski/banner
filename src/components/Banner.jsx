@@ -19,15 +19,15 @@ class Banner extends React.Component {
 
     if (!component) {
       return null;
+    } else {
+      let url = component.getIn(['settings', 'url']);
+
+      return (
+        <div className="v-banner">
+          <img className="v-banner__img" src={url} width="100%"/>
+        </div>
+      );
     }
-
-    let url = component.getIn(['settings', 'url']);
-
-    return (
-      <div className="v-banner">
-        <img src={url} width="100%"/>
-      </div>
-    );
   }
 }
 

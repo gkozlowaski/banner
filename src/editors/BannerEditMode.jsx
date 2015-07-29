@@ -1,6 +1,5 @@
 import React from 'react';
 import { dispatcher, connectToStores } from 'sdk';
-import classNames from 'classnames';
 import style from '../style/Banner.less'; // eslint-disable-line
 
 @connectToStores([
@@ -17,17 +16,18 @@ class BannerEditMode extends React.Component {
 
   render() {
     const component = this.props.SettingsStore.getIn([this.props.route, this.props.id]);
+    let classes = 'v-banner v-banner--edit';
 
-    let classes = classNames(
-      'v-banner', 'v-banner--edit'
-    );
-
-    if (!component) {
-      return <div className={classes} onClick={this.onClickContainer}>Set up banner!</div>;
+    let content;
+    if (component) {
+      content = <img src={component.getIn(['settings', 'url'])} width="100%"/>;
+    } else {
+      content = 'Set up banner!';
     }
+
     return (
-      <div className={classes} onClick={this.onClickContainer}>
-        <img src={component.getIn(['settings', 'url'])} width="100%"/>
+      <div className={classes} data-no-config={!component} onClick={this.onClickContainer}>
+        {content}
       </div>
     );
   }

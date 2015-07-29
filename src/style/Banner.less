@@ -1,8 +1,16 @@
-.vtex-storefront-banner {
+.v-banner {
   width: 100%;
 }
 
-.vtex-storefront-banner--edit img {
-  background-color: rgba(0, 0, 200, 0.5);
-  opacity: 0.2;
+.v-banner--edit {
+  border: 2px solid #018cd1;
+
+  .v-banner__img {
+    opacity: 0.2;
+  }
+
+  &[data-no-config=true] {
+    border: 5px solid #018cd1;
+    padding: 10px;
+  }
 }
