@@ -34,8 +34,15 @@ class BannerEditor extends React.Component {
     let ActionBar = this.props.actionBar;
 
     return (
-      <div className="storefront-banner-admin">
-        <input type="text" value={this.state.url} onChange={this.changeUrl}/>
+      <div className="v-banner-editor">
+        <form className="container">
+          <h1>Banner</h1>
+          <div className="form-group">
+            <label for="v-banner__form-url">URL da imagem</label>
+            <input id="v-banner__form-url" className="form-control" type="text"
+                   value={this.state.url} onChange={this.changeUrl} placeholder="URL"/>
+          </div>
+        </form>
 
         <ActionBar onSave={this.onClickSave}/>
       </div>
