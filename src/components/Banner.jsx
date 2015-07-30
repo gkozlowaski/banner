@@ -15,7 +15,7 @@ class Banner extends React.Component {
       return <EditComponent {...this.props}/>;
     }
 
-    const component = this.props.SettingsStore.getIn([this.props.route, this.props.id]);
+    const component = null; //this.props.SettingsStore.getIn([this.props.route, this.props.id]);
 
     if (!component) {
       return null;

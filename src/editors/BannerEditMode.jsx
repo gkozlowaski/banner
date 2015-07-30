@@ -22,7 +22,7 @@ class BannerEditMode extends React.Component {
     if (component) {
       content = <img src={component.getIn(['settings', 'url'])} width="100%"/>;
     } else {
-      content = 'Set up banner!';
+      content = <h3>Adicione um Banner</h3>;
     }
 
     return (

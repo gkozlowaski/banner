@@ -1,16 +1,15 @@
+@import "./base/base";
+
 .v-banner {
   width: 100%;
 }
 
 .v-banner--edit {
-  border: 2px solid #018cd1;
-
-  .v-banner__img {
-    opacity: 0.2;
-  }
-
   &[data-no-config=true] {
-    border: 5px solid #018cd1;
+    box-shadow: inset 0px 0px 0px 3px #E94B35;
+    //outline: 2px solid #E94B35;
+    //outline-offset: 5px;
+    transition: box-shadow 0.4s cubic-bezier(1, 0.12, 0, 1.07) 0.4s, outline 0.4s cubic-bezier(1, 0.12, 0, 1.07) 0.4s;
     padding: 10px;
   }
 }
