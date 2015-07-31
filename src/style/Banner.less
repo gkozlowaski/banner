@@ -4,12 +4,27 @@
   width: 100%;
 }
 
-.v-banner--edit {
-  &[data-no-config=true] {
-    box-shadow: inset 0px 0px 0px 3px #E94B35;
-    //outline: 2px solid #E94B35;
-    //outline-offset: 5px;
-    transition: box-shadow 0.4s cubic-bezier(1, 0.12, 0, 1.07) 0.4s, outline 0.4s cubic-bezier(1, 0.12, 0, 1.07) 0.4s;
-    padding: 10px;
-  }
+.v-banner--edit[data-no-config=true] {
+  padding: 3px;
+  box-shadow: inset 0px 0px 0px 3px #E94B35;
+  //outline: 2px solid #E94B35;
+  //outline-offset: 5px;
+  //padding: 10px;
+  transition: box-shadow 0.4s cubic-bezier(1, 0.12, 0, 1.07) 0.4s, outline 0.4s cubic-bezier(1, 0.12, 0, 1.07) 0.4s;
+}
+
+.v-banner-ed__current-banner {
+  background: url('/assets/@vtex.storefront-banner/images/default_banner.png') no-repeat;
+  background-size: 100% auto;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-banner-ed__banner-placeholder-text {
+  display: flex;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: @black-soft;
 }

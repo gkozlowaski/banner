@@ -1,0 +1,74 @@
+@import "./base/base.less";
+
+.v-banner-ed__editor {
+  background-color: @gray-soft;
+  height: 100%;
+  padding: 15px;
+}
+
+.v-banner-ed__title {
+  font-family: @font-display;
+  margin-top: 10px;
+}
+
+.v-banner-ed__current-banner {
+  background: url('/assets/@vtex.storefront-banner/images/default_banner.png') no-repeat;
+  background-size: 100% auto;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-banner-ed__banner-placeholder-text {
+  display: flex;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: @black-soft;
+}
+
+
+.v-banner-ed__add {
+  display: flex;
+  align-items: center;
+}
+
+.v-banner-ed__add-button {
+  .v-clean-btn();
+  .v-no-outlines();
+  background-color: transparent;
+  background: url('/assets/@vtex.storefront-banner/icons/plus-icon.svg') no-repeat @red-matter;
+  background-size: 45% auto;
+  background-position: center;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.v-banner-ed__add-label {
+  color: @black;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  font-weight: 700;
+}
+
+.v-banner-ed__form {
+  margin: 0em 1em 0em 1em;
+}
+
+.v-banner-ed__form__url {
+  label {
+    font-family: @font-body;
+    color: @black-soft;
+  }
+}
+
+.v-banner-ed__form__alt {
+  label {
+    font-family: @font-body;
+    color: @black-soft;
+  }
+}
