@@ -33,29 +33,37 @@ class BannerEditor extends React.Component {
 
   render() {
     let ActionBar = this.props.actionBar;
+    let isAdding = true;
 
     return (
       <div className="v-banner-ed__editor">
         <div className="v-banner-ed__editor__wrapper">
           <h1 className="v-banner-ed__title">Banner</h1>
           <div className="v-banner-ed__current-banner">
-          <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem selecionada</span>
+          <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem configurada</span>
           </div>
           <div className="v-banner-ed__add">
             <button id="add" className="v-banner-ed__add-button"></button>
             <label htmlFor="add" className="v-banner-ed__add-label">Adicionar nova imagem</label>
           </div>
-            <form className="v-banner-ed__form">
-                <div className="v-banner-ed__form__url">
-                  <label htmlFor="url">URL da imagem</label>
-                  <input id="url" className="form-control" type="text"
-                         value={this.state.url} onChange={this.changeUrl} placeholder="URL"/>
-                </div>
-                <div className="v-banner-ed__form__alt">
-                  <label htmlFor="alt">Alt-text da imagem</label>
-                  <input id="alt" className="form-control" type="text"
-                        onChange={this.changeAlt} placeholder="Alt-text"/>
-                </div>
+            <form className="v-banner-ed__form" data-is-adding={isAdding}>
+              <div className="v-banner-ed__form__wrapper">
+                  <div className="v-banner-ed__form__url">
+                    <label htmlFor="url">URL da Imagem</label>
+                    <input id="url" className="form-control" type="url"
+                           value={this.state.url} onChange={this.changeUrl} placeholder="URL"/>
+                  </div>
+                  <div className="v-banner-ed__form__link">
+                    <label htmlFor="alt">Link do Banner</label>
+                    <input id="alt" className="form-control" type="url"
+                          onChange={this.changeLink} placeholder="Link do Banner"/>
+                  </div>
+                  <div className="v-banner-ed__form__alt">
+                    <label htmlFor="alt">Alt-text da imagem</label>
+                    <input id="alt" className="form-control" type="text"
+                          onChange={this.changeAlt} placeholder="Alt-text"/>
+                  </div>
+              </div>
             </form>
           </div>
           <ActionBar onSave={this.onClickSave}/>

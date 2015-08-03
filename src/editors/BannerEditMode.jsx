@@ -24,7 +24,7 @@ class BannerEditMode extends React.Component {
     } else {
       content =
       <div className="v-banner-ed__current-banner">
-      <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem selecionada</span>
+      <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem configurada</span>
       </div>;
     }
 

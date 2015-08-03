@@ -3,10 +3,11 @@
 .v-banner-ed__editor {
   background-color: @gray-soft;
   height: 100%;
+  overflow: auto;
 }
 
 .v-banner-ed__editor__wrapper {
-    padding: 15px;
+    padding: 15px 15px 70px 15px;
 }
 
 .v-banner-ed__title {
@@ -68,20 +69,33 @@
 
 .v-banner-ed__form {
   margin: 0em 1em 0em 1em;
+  opacity: 0;
+  overflow-y: hidden;
+  transition: opacity, 0.2s 0.3s;
+  height: 0px;
+
+  .v-banner-ed__form__wrapper {
+    transform: translateY(-192px);
+    transition: transform, 0.3s;
+  }
+
+  &[data-is-adding=true] {
+    opacity: 1;
+    transition: opacity, 0.2s;
+    height: 192px;
+
+    .v-banner-ed__form__wrapper {
+      transform: translateY(0px);
+      transition: transform, 0.3s 0.2s;
+    }
+  }
 
   input {
     margin-bottom: 0.5em;
   }
 }
 
-.v-banner-ed__form__url {
-  label {
-    font-family: @font-body;
-    color: @black-soft;
-  }
-}
-
-.v-banner-ed__form__alt {
+.v-banner-ed__form__url, .v-banner-ed__form__link, .v-banner-ed__form__alt {
   label {
     font-family: @font-body;
     color: @black-soft;
