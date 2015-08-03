@@ -35,21 +35,30 @@
 .v-banner-ed__add {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .v-banner-ed__add-button {
   .v-clean-btn();
-  .v-no-outlines();
-  background-color: transparent;
   background: url('/assets/@vtex.storefront-banner/icons/plus-icon.svg') no-repeat @red-matter;
-  background-size: 45% auto;
-  background-position: center;
-  border-radius: 50%;
+  background-color: @red-matter;
+  background-position: 15px center;
+  background-size: 15px auto;
   border: none;
-  width: 30px;
-  height: 30px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 0px darken(@red-matter, 10%);
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 500;
   margin-top: 1em;
   margin-bottom: 1em;
+  padding: 10px 10px 10px 34px;
+  width: 90%;
+
+  &:active {
+  box-shadow: none;
+  transform: translateX(1px) translateY(1px);
+  }
 }
 
 .v-banner-ed__add-label {

@@ -43,8 +43,7 @@ class BannerEditor extends React.Component {
           <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem configurada</span>
           </div>
           <div className="v-banner-ed__add">
-            <button id="add" className="v-banner-ed__add-button"></button>
-            <label htmlFor="add" className="v-banner-ed__add-label">Adicionar nova imagem</label>
+            <button id="add" className="v-banner-ed__add-button">Adicionar nova imagem</button>
           </div>
             <form className="v-banner-ed__form" data-is-adding={isAdding}>
               <div className="v-banner-ed__form__wrapper">
