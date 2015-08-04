@@ -12,12 +12,18 @@ class BannerEditor extends React.Component {
     let config = props.SettingsStore.getIn([this.props.route, this.props.id, 'settings']);
 
     this.state = {
-      url: config ? config.get('url') : null
+      url: config ? config.get('url') : null,
+      //Created state for isAdding -- the screen will only re-render if the variable is in a state
+      isAdding: false
     };
   }
 
   changeUrl = (e) => {
     this.setState({ url: e.target.value });
+  }
+
+  handleClick = () => {
+    this.setState({ isAdding: !this.state.isAdding });
   }
 
   onClickSave = () => {
@@ -33,7 +39,7 @@ class BannerEditor extends React.Component {
 
   render() {
     let ActionBar = this.props.actionBar;
-    let isAdding = true;
+    //console.log(this.state.isAdding);
 
     return (
       <div className="v-banner-ed__editor">
@@ -43,9 +49,9 @@ class BannerEditor extends React.Component {
           <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem configurada</span>
           </div>
           <div className="v-banner-ed__add">
-            <button id="add" className="v-banner-ed__add-button">Adicionar nova imagem</button>
+            <button id="add" className="v-banner-ed__add-button" onClick={this.handleClick}>Adicionar nova imagem</button>
           </div>
-            <form className="v-banner-ed__form" data-is-adding={isAdding}>
+            <form className="v-banner-ed__form" data-is-adding={this.state.isAdding}>
               <div className="v-banner-ed__form__wrapper">
                   <div className="v-banner-ed__form__url">
                     <label htmlFor="url">URL da Imagem</label>
