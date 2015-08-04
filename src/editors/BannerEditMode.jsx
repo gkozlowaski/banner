@@ -22,14 +22,19 @@ class BannerEditMode extends React.Component {
       content = <img src={component.getIn(['settings', 'url'])} width="100%"/>;
     } else {
       content =
-      <div className="v-banner-ed__current-banner">
-      <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem configurada</span>
+      <div>
+        <div className="v-banner-ed__current-banner">
+          <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem configurada</span>
+        </div>
       </div>;
     }
 
     return (
-      <div className="v-banner" data-no-config={!component} onClick={this.onClickContainer}>
-        {content}
+      <div>
+        <span className="v-banner-ed__component-title">Banner</span>
+        <div className="v-banner" data-no-config={!component} onClick={this.onClickContainer}>
+          {content}
+        </div>
       </div>
     );
   }
