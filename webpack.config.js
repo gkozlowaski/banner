@@ -13,10 +13,17 @@ module.exports = {
   watch: production ? false : true,
 
   entry: hot ? {
-    '.': ['webpack-dev-server/client?http://0.0.0.0:3000',
-              'webpack/hot/only-dev-server',
-              './' + pkg.name + '.jsx'],
-    editor: './' + pkg.name + '-editor.jsx'
+    '.':
+      [
+        'webpack-dev-server/client?http://0.0.0.0:3000',
+        'webpack/hot/only-dev-server',
+        './src/' + pkg.name + '.jsx'
+      ],
+    editor:
+      [
+        'webpack/hot/only-dev-server',
+        './src/' + pkg.name + '-editor.jsx'
+      ]
   } : {
     '.': './src/' + pkg.name + '.jsx',
     editor: './src/' + pkg.name + '-editor.jsx'
@@ -24,6 +31,7 @@ module.exports = {
 
   externals: {
     'sdk': 'storefront.sdk',
+    'react/lib/ReactMount': 'ReactMount',
     'react': 'React',
     'react-router': 'ReactRouter',
     intl: 'Intl',
@@ -93,7 +101,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()
   ] : hot ? [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ] : [],
 
   quiet: false,
