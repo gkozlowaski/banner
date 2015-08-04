@@ -1,0 +1,13 @@
+@import "./base/base";
+@import "./Banner.less";
+
+.v-banner {
+  &[data-no-config=true] {
+    padding: 3px;
+    box-shadow: inset 0px 0px 0px 3px #E94B35;
+    //outline: 2px solid #E94B35;
+    //outline-offset: 5px;
+    //padding: 10px;
+    transition: box-shadow 0.4s cubic-bezier(1, 0.12, 0, 1.07) 0.4s, outline 0.4s cubic-bezier(1, 0.12, 0, 1.07) 0.4s;
+  }
+}
