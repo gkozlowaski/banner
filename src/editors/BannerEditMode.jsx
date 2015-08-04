@@ -6,7 +6,7 @@ import style from '../style/BannerEditMode.less'; // eslint-disable-line
   dispatcher.stores.SettingsStore
 ])
 class BannerEditMode extends React.Component {
-  onClickContainer = () => {
+  handleOpenEditor = () => {
     dispatcher.actions.EditorActions.openEditor({
       component: 'BannerEditor',
       route: this.props.route,
@@ -32,7 +32,7 @@ class BannerEditMode extends React.Component {
     return (
       <div>
         <span className="v-banner-ed__component-title">Banner</span>
-        <div className="v-banner" data-no-config={!component} onClick={this.onClickContainer}>
+        <div className="v-banner" data-no-config={!component} onTouchTap={this.handleOpenEditor}>
           {content}
         </div>
       </div>

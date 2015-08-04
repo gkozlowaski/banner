@@ -13,7 +13,7 @@ class BannerEditor extends React.Component {
 
     this.state = {
       url: config ? config.get('url') : null,
-      //Created state for isAdding -- the screen will only re-render if the variable is in a state
+      // Created state for isAdding -- the screen will only re-render if the variable is in a state
       isAdding: false
     };
   }
@@ -22,11 +22,11 @@ class BannerEditor extends React.Component {
     this.setState({ url: e.target.value });
   }
 
-  handleClick = () => {
+  handleNewImage = () => {
     this.setState({ isAdding: !this.state.isAdding });
   }
 
-  onClickSave = () => {
+  handleSave = () => {
     dispatcher.actions.SettingsActions.saveComponent({
       accountName: this.props.ShopStore.get('accountName'),
       route: this.props.route,
@@ -46,33 +46,37 @@ class BannerEditor extends React.Component {
         <div className="v-banner-ed__editor__wrapper">
           <h1 className="v-banner-ed__title">Banner</h1>
           <div className="v-banner-ed__current-banner">
-          <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem configurada</span>
+            <span className="v-banner-ed__banner-placeholder-text">
+              Nenhuma imagem configurada
+            </span>
           </div>
           <div className="v-banner-ed__add">
-            <button id="add" className="v-banner-ed__add-button" onClick={this.handleClick}>Adicionar nova imagem</button>
+            <button id="add" className="v-banner-ed__add-button" onTouchTap={this.handleNewImage}>
+              Adicionar nova imagem
+            </button>
           </div>
-            <form className="v-banner-ed__form" data-is-adding={this.state.isAdding}>
-              <div className="v-banner-ed__form__wrapper">
-                  <div className="v-banner-ed__form__url">
-                    <label htmlFor="url">URL da Imagem</label>
-                    <input id="url" className="form-control" type="url"
-                           value={this.state.url} onChange={this.changeUrl} placeholder="URL"/>
-                  </div>
-                  <div className="v-banner-ed__form__link">
-                    <label htmlFor="alt">Link do Banner</label>
-                    <input id="alt" className="form-control" type="url"
-                          onChange={this.changeLink} placeholder="Link do Banner"/>
-                  </div>
-                  <div className="v-banner-ed__form__alt">
-                    <label htmlFor="alt">Alt-text da imagem</label>
-                    <input id="alt" className="form-control" type="text"
-                          onChange={this.changeAlt} placeholder="Alt-text"/>
-                  </div>
+          <form className="v-banner-ed__form" data-is-adding={this.state.isAdding}>
+            <div className="v-banner-ed__form__wrapper">
+              <div className="v-banner-ed__form__url">
+                <label htmlFor="url">URL da Imagem</label>
+                <input id="url" className="form-control" type="url"
+                       value={this.state.url} onChange={this.changeUrl} placeholder="URL"/>
               </div>
-            </form>
-          </div>
-          <ActionBar onSave={this.onClickSave}/>
+              <div className="v-banner-ed__form__link">
+                <label htmlFor="alt">Link do Banner</label>
+                <input id="alt" className="form-control" type="url"
+                      onChange={this.changeLink} placeholder="Link do Banner"/>
+              </div>
+              <div className="v-banner-ed__form__alt">
+                <label htmlFor="alt">Alt-text da imagem</label>
+                <input id="alt" className="form-control" type="text"
+                      onChange={this.changeAlt} placeholder="Alt-text"/>
+              </div>
+            </div>
+          </form>
         </div>
+        <ActionBar onSave={this.handleSave}/>
+      </div>
     );
   }
 }
