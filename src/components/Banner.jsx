@@ -15,16 +15,20 @@ class Banner extends React.Component {
       return <EditComponent {...this.props}/>;
     }
 
-    const component = null; //this.props.SettingsStore.getIn([this.props.route, this.props.id]);
+    const component = this.props.SettingsStore.getIn([this.props.route, this.props.id]);
 
     if (!component) {
       return null;
     } else {
-      let url = component.getIn(['settings', 'url']);
+      let imageUrl = component.getIn(['settings', 'url']);
+      let link = component.getIn(['settings', 'link']);
+      let altText = component.getIn(['settings', 'altText']);
 
       return (
         <div className="v-banner">
-          <img className="v-banner__img" src={url} width="100%"/>
+          <a className="v-banner__link" href={link}>
+            <img className="v-banner__img" src={imageUrl} width="100%" alt={altText}/>
+          </a>
         </div>
       );
     }

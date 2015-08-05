@@ -12,18 +12,22 @@ class BannerEditor extends React.Component {
     let config = props.SettingsStore.getIn([this.props.route, this.props.id, 'settings']);
 
     this.state = {
-      url: config ? config.get('url') : null,
-      // Created state for isAdding -- the screen will only re-render if the variable is in a state
-      isAdding: false
+      imageUrl: config ? config.get('url') : null,
+      link: config ? config.get('link') : null,
+      altText: config ? config.get('altText') : null
     };
   }
 
-  changeUrl = (e) => {
-    this.setState({ url: e.target.value });
+  changeImageUrl = (e) => {
+    this.setState({ imageUrl: e.target.value });
   }
 
-  handleNewImage = () => {
-    this.setState({ isAdding: !this.state.isAdding });
+  changeLink = (e) => {
+    this.setState({ link: e.target.value });
+  }
+
+  changeAltText = (e) => {
+    this.setState({ altText: e.target.value });
   }
 
   handleSave = () => {
@@ -54,7 +58,7 @@ class BannerEditor extends React.Component {
               <div className="v-banner-ed__form__url">
                 <label htmlFor="url">URL da Imagem</label>
                 <input id="url" className="form-control" type="url"
-                       value={this.state.url} onChange={this.changeUrl} placeholder="URL"/>
+                       value={this.state.url} onChange={this.changeImageUrl} placeholder="URL"/>
               </div>
               <div className="v-banner-ed__form__link">
                 <label htmlFor="alt">Link do Banner</label>
@@ -64,7 +68,7 @@ class BannerEditor extends React.Component {
               <div className="v-banner-ed__form__alt">
                 <label htmlFor="alt">Alt-text da imagem</label>
                 <input id="alt" className="form-control" type="text"
-                      onChange={this.changeAlt} placeholder="Alt-text"/>
+                      onChange={this.changeAltText} placeholder="Alt-text"/>
               </div>
             </div>
           </form>
