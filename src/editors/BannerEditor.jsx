@@ -44,18 +44,12 @@ class BannerEditor extends React.Component {
     return (
       <div className="v-banner-ed__editor">
         <div className="v-banner-ed__editor__wrapper">
-          <h1 className="v-banner-ed__title">Banner</h1>
           <div className="v-banner-ed__current-banner">
             <span className="v-banner-ed__banner-placeholder-text">
               Nenhuma imagem configurada
             </span>
           </div>
-          <div className="v-banner-ed__add">
-            <button id="add" className="v-banner-ed__add-button" onTouchTap={this.handleNewImage}>
-              Adicionar nova imagem
-            </button>
-          </div>
-          <form className="v-banner-ed__form" data-is-adding={this.state.isAdding}>
+          <form className="v-banner-ed__form">
             <div className="v-banner-ed__form__wrapper">
               <div className="v-banner-ed__form__url">
                 <label htmlFor="url">URL da Imagem</label>
