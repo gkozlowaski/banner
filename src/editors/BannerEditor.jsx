@@ -9,6 +9,10 @@ import BannerPlaceholder from 'editors/BannerPlaceholder';
   dispatcher.stores.SettingsStore
 ])
 class BannerEditor extends React.Component {
+  static storefront = {
+    title: 'Banner'
+  }
+
   constructor(props) {
     super(props);
     let config = props.SettingsStore.getIn([this.props.route, this.props.id, 'settings']);
