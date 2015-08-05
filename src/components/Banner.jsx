@@ -1,6 +1,7 @@
 import React from 'react';
 import { dispatcher, connectToStores } from 'sdk';
-import style from '../style/Banner.less'; // eslint-disable-line
+import style from '../styles/Banner.less'; // eslint-disable-line
+import BannerImage from './BannerImage';
 
 @connectToStores([
   dispatcher.stores.SettingsStore,
@@ -26,9 +27,7 @@ class Banner extends React.Component {
 
       return (
         <div className="v-banner">
-          <a className="v-banner__link" href={link}>
-            <img className="v-banner__img" src={imageUrl} width="100%" alt={altText}/>
-          </a>
+          <BannerImage imageUrl={imageUrl} link={link} altText={altText}/>
         </div>
       );
     }

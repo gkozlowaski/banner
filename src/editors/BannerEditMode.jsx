@@ -1,6 +1,8 @@
 import React from 'react';
 import { dispatcher, connectToStores } from 'sdk';
-import style from '../style/BannerEditMode.less'; // eslint-disable-line
+import style from 'styles/BannerEditMode.less'; // eslint-disable-line
+import BannerImage from 'components/BannerImage';
+import BannerPlaceholder from 'editors/BannerPlaceholder';
 
 @connectToStores([
   dispatcher.stores.SettingsStore
@@ -14,19 +16,22 @@ class BannerEditMode extends React.Component {
     });
   }
 
+  onTouchBannerLink = (e) => {
+    e.preventDefault();
+  }
+
   render() {
     const component = this.props.SettingsStore.getIn([this.props.route, this.props.id]);
 
     let content;
     if (component) {
-      content = <img src={component.getIn(['settings', 'url'])} width="100%"/>;
+      let imageUrl = component.getIn(['settings', 'url']);
+      let link = component.getIn(['settings', 'link']);
+      let altText = component.getIn(['settings', 'altText']);
+
+      content = <BannerImage imageUrl={imageUrl} link={link} altText={altText} onTouchBannerLink={this.onTouchBannerLink}/>;
     } else {
-      content =
-      <div>
-        <div className="v-banner-ed__current-banner">
-          <span className="v-banner-ed__banner-placeholder-text">Nenhuma imagem configurada</span>
-        </div>
-      </div>;
+      content = <BannerPlaceholder/>;
     }
 
     return (

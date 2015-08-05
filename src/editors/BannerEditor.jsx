@@ -1,6 +1,8 @@
 import React from 'react';
 import { dispatcher, connectToStores } from 'sdk';
-import style from '../style/BannerEditor.less'; // eslint-disable-line
+import style from 'styles/BannerEditor.less'; // eslint-disable-line
+import BannerImage from 'components/BannerImage';
+import BannerPlaceholder from 'editors/BannerPlaceholder';
 
 @connectToStores([
   dispatcher.stores.ShopStore,
@@ -41,28 +43,28 @@ class BannerEditor extends React.Component {
     dispatcher.actions.EditorActions.closeEditor();
   }
 
+  onTouchBannerLink = (e) => {
+    e.preventDefault();
+  }
+
   render() {
     let ActionBar = this.props.actionBar;
 
     let currentBanner;
     if (this.state.imageUrl) {
-      currentBanner = (
-        <img src={this.state.imageUrl} alt={this.state.altText} width={'100%'}/>
-      );
+      let imageUrl = this.state.imageUrl;
+      let altText = this.state.altText;
+      let link = this.state.link;
+
+      currentBanner = <BannerImage imageUrl={imageUrl} link={link} altText={altText} onTouchBannerLink={this.onTouchBannerLink}/>;
     } else {
-      currentBanner = (
-        <span className="v-banner-ed__banner-placeholder-text">
-          Nenhuma imagem configurada
-        </span>
-      );
+      currentBanner = <BannerPlaceholder/>;
     }
 
     return (
       <div className="v-banner-ed__editor">
         <div className="v-banner-ed__editor__wrapper">
-          <div className="v-banner-ed__current-banner">
-            {currentBanner}
-          </div>
+          {currentBanner}
           <form className="v-banner-ed__form">
             <div className="v-banner-ed__form__wrapper">
               <div className="v-banner-ed__form__url">
