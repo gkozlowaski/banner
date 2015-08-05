@@ -43,15 +43,25 @@ class BannerEditor extends React.Component {
 
   render() {
     let ActionBar = this.props.actionBar;
-    //console.log(this.state.isAdding);
+
+    let currentBanner;
+    if (this.state.imageUrl) {
+      currentBanner = (
+        <img src={this.state.imageUrl} alt={this.state.altText} width={'100%'}/>
+      );
+    } else {
+      currentBanner = (
+        <span className="v-banner-ed__banner-placeholder-text">
+          Nenhuma imagem configurada
+        </span>
+      );
+    }
 
     return (
       <div className="v-banner-ed__editor">
         <div className="v-banner-ed__editor__wrapper">
           <div className="v-banner-ed__current-banner">
-            <span className="v-banner-ed__banner-placeholder-text">
-              Nenhuma imagem configurada
-            </span>
+            {currentBanner}
           </div>
           <form className="v-banner-ed__form">
             <div className="v-banner-ed__form__wrapper">
