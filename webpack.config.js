@@ -1,70 +1,29 @@
 var webpack = require('webpack');
 var path = require('path');
-var nodeModulesDir = path.join(__dirname, 'node_modules');
 var pkg = require('./package.json');
 var meta = require('./meta.json');
 var publicPath = '/assets/@' + meta.vendor + '.' + pkg.name + '/';
 var production = process.env.NODE_ENV === 'production';
 var hot = process.env.NODE_ENV === 'hot';
+var svgoConfig = JSON.stringify({
+  plugins: [
+    {removeTitle: true},
+    {convertColors: {shorthex: false}},
+    {convertPathData: false}
+  ]
+});
 
-module.exports = {
-  devtool: 'sourcemap',
-
-  watch: production ? false : true,
-
-  entry: hot ? {
-    '.':
-      [
-        'webpack-dev-server/client?http://0.0.0.0:3000',
-        'webpack/hot/only-dev-server',
-        './src/' + pkg.name + '.jsx'
-      ],
-    editor:
-      [
-        'webpack/hot/only-dev-server',
-        './src/' + pkg.name + '-editor.jsx'
-      ]
-  } : {
-    '.': './src/' + pkg.name + '.jsx',
-    editor: './src/' + pkg.name + '-editor.jsx'
-  },
-
-  externals: {
-    'sdk': 'storefront.sdk',
-    'react/lib/ReactMount': 'ReactMount',
-    'react': 'React',
-    'react-router': 'ReactRouter',
-    intl: 'Intl',
-    'react-intl': 'ReactIntl'
-  },
-
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-      'editors': path.join(__dirname, '/src/editors/'),
-      'components': path.join(__dirname, '/src/components/'),
-      'pages': path.join(__dirname, '/src/pages/'),
-      'styles': path.join(__dirname, '/src/styles/'),
-      'utils': path.join(__dirname, '/src/utils/')
-    }
-  },
-
-  output: {
-    path: path.resolve(__dirname, './storefront/assets/'),
-    publicPath: publicPath,
-    filename: '[name]/' + pkg.name + '.js',
-    chunkFilename: pkg.name + '-[name].js',
-    devtoolModuleFilenameTemplate: 'webpack:///' + pkg.name + '/[resource]?[hash][id]'
-  },
-
-  eslint: {
-    configFile: '.eslintrc'
+var config = {
+  entry: {
+    'Banner': ['./src/components/index.js'],
+    'editors/index': ['./src/editors/index.js']
   },
 
   module: {
     preLoaders: [
       {
-        test: /\.js$|\.jsx$/,
+        test: /\.js$/,
+        include: path.join(__dirname, 'src'),
         exclude: /node_modules/,
         loader: 'eslint-loader'
       }
@@ -72,13 +31,14 @@ module.exports = {
 
     loaders: [
       {
-        test: /\.jsx$/,
-        exclude: [nodeModulesDir],
-        loaders: hot ? ['react-hot', 'babel-loader?stage=0'] : ['babel-loader?stage=0']
-      }, {
         test: /\.js$/,
-        exclude: [nodeModulesDir],
-        loaders: ['babel-loader?stage=0']
+        exclude: /node_modules/,
+        include: path.join(__dirname, 'src'),
+        loader: 'babel',
+        query: {
+          stage: 0,
+          plugins: []
+        }
       }, {
         test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader'
@@ -86,7 +46,16 @@ module.exports = {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       }, {
-        test: /\.(png|jpg|woff|ttf|eot|svg|woff2)$/,
+        test: /\.svg$/,
+        loaders: ['raw-loader', 'svgo-loader?' + JSON.stringify({
+          plugins: [
+            {removeTitle: true},
+            {convertColors: {shorthex: false}},
+            {convertPathData: false}
+          ]
+        })]
+      }, {
+        test: /\.(png|jpg|woff|ttf|eot|woff2)$/,
         loader: 'url-loader?limit=100000'
       }, {
         test: /\.jpg$/,
@@ -96,36 +65,81 @@ module.exports = {
   },
 
   plugins: production ? [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}}),
     new webpack.optimize.AggressiveMergingPlugin()
-  ] : hot ? [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ] : [],
+  ] : [
+    new webpack.optimize.OccurenceOrderPlugin()
+  ],
 
-  quiet: false,
+  externals: {
+    'alt': 'alt',
+    'axios': 'axios',
+    'immutable': 'Immutable',
+    'intl': 'Intl',
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'react-intl': 'ReactIntl',
+    'react-router': 'ReactRouter',
+    'sdk': 'storefront.sdk'
+  },
 
-  noInfo: false,
-
-  devServer: {
-    publicPath: publicPath,
-    port: 3000,
-    hot: true,
-    inline: true,
-    stats: {
-      assets: false,
-      colors: true,
-      version: true,
-      hash: false,
-      timings: true,
-      chunks: true,
-      chunkModules: false
-    },
-    historyApiFallback: true,
-    proxy: {
-      '*': 'http://janus-edge.vtex.com.br/'
+  resolve: {
+    extensions: ['', '.js'],
+    alias: {
+      'assets': path.join(__dirname, '/src/assets'),
+      'components': path.join(__dirname, '/src/components'),
+      'editors': path.join(__dirname, '/src/editors'),
+      'pages': path.join(__dirname, '/src/pages'),
+      'utils': path.join(__dirname, '/src/utils')
     }
+  },
+
+  output: {
+    path: path.resolve(__dirname, './storefront/assets/'),
+    publicPath: publicPath,
+    filename: '[name].js',
+    chunkFilename: '[name].js',
+    jsonpFunction: 'webpackJsonp_' + meta.vendor.replace(/\-/g, '') + '_' + meta.name.replace(/\-/g, ''),
+    devtoolModuleFilenameTemplate: 'webpack:///' + pkg.name + '/[resource]'
+  },
+
+  eslint: {
+    configFile: '.eslintrc'
+  },
+
+  devtool: 'source-map',
+
+  watch: production ? false : true,
+
+  quiet: true,
+
+  noInfo: true,
+
+  proxy: {
+    '*': 'http://janus-edge.vtex.com.br/'
   }
 };
+
+if (process.env.HOT) {
+  config.devtool = 'source-map';
+  config.entry['editors/index'].unshift('webpack-hot-middleware/client');
+  config.plugins.unshift(new webpack.NoErrorsPlugin());
+  config.plugins.unshift(new webpack.HotModuleReplacementPlugin());
+
+  config.module.loaders[0].query.plugins.push('react-transform');
+  config.module.loaders[0].query.extra = {
+    'react-transform': {
+      transforms: [{
+        transform: 'react-transform-hmr',
+        imports: ['react'],
+        locals: ['module']
+      }, {
+        transform: 'react-transform-catch-errors',
+        imports: ['react', 'redbox-react']
+      }]
+    }
+  };
+}
+
+module.exports = config;

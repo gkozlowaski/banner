@@ -1,6 +1,6 @@
 {
   "assets": [
-    "storefront-banner.js",
-    "editor/storefront-banner.js"
+    "Banner.js",
+    "editors/index.js"
   ]
 }

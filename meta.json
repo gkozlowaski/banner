@@ -1,10 +1,9 @@
 {
   "name": "storefront-banner",
-  "title": "A Storefront banner",
-  "version": "0.2.1",
   "vendor": "vtex",
-  "dependencies": {},
-  "schemas": {
-    "storefront": 1
+  "title": "",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {
   }
 }
