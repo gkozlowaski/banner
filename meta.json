@@ -1,8 +1,8 @@
 {
   "name": "storefront-banner",
   "vendor": "vtex",
-  "title": "",
-  "description": "",
+  "title": "Banner",
+  "description": "Banner",
   "version": "0.1.0",
   "dependencies": {
     "vtex.storefront": "0"
