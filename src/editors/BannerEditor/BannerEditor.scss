@@ -1,7 +1,7 @@
-@import "../../utils/vtex-variables";
+@import "~utils/vtex-variables.scss";
 
 .v-banner-ed__editor {
-  background-color: @gray-soft;
+  background-color: $gray-soft;
   height: 100%;
   overflow: auto;
 }
@@ -11,7 +11,7 @@
 }
 
 .v-banner-ed__title {
-  font-family: @font-display;
+  font-family: $font-display;
   font-weight: 400;
   margin-top: 10px;
 }
@@ -23,7 +23,7 @@
 }
 
 .v-banner-ed__add-label {
-  color: @black;
+  color: $black;
   margin-top: 0.5em;
   margin-left: 0.5em;
   font-weight: 700;
@@ -51,7 +51,7 @@
 
 .v-banner-ed__form__url, .v-banner-ed__form__link, .v-banner-ed__form__alt {
   label {
-    font-family: @font-body;
-    color: @black-soft;
+    font-family: $font-body;
+    color: $black-soft;
   }
 }

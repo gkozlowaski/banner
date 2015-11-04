@@ -1,6 +1,6 @@
 import React from 'react';
 import { storefront } from 'sdk';
-import './Banner.less';
+import './Banner.scss';
 import BannerImage from './BannerImage';
 
 @storefront({

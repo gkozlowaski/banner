@@ -32,11 +32,13 @@ var config = {
           plugins: []
         }
       }, {
-        test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
+        test: /\.scss$/,
+        loaders: production ?
+          ['style', 'css', 'sass'] :
+          ['style', 'css?sourceMap', 'sass?sourceMap']
       }, {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loaders: ['style', 'css']
       }, {
         test: /\.svg$/,
         loaders: ['raw-loader', 'svgo-loader?' + JSON.stringify({
