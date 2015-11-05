@@ -1,5 +1,4 @@
 import React from 'react';
-//import style from '../styles/BannerPlaceholder.less'; // eslint-disable-line
 
 class BannerPlaceholder extends React.Component {
   render() {

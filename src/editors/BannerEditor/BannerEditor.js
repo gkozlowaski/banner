@@ -1,5 +1,5 @@
 import React from 'react';
-import './BannerEditor.less';
+import './BannerEditor.scss';
 import BannerImage from 'components/Banner/BannerImage';
 import BannerPlaceholder from './BannerPlaceholder';
 
