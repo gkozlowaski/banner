@@ -3,7 +3,7 @@
   "vendor": "vtex",
   "title": "Banner",
   "description": "Banner",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "dependencies": {
     "vtex.storefront": "0"
   }
