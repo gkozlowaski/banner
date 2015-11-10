@@ -102,7 +102,7 @@ var config = {
     configFile: '.eslintrc'
   },
 
-  devtool: 'source-map',
+  devtool: production ? null : 'source-map',
 
   watch: production ? false : true,
 
