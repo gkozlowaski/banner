@@ -1,8 +1,6 @@
 {
   "assets": [
     "Banner.js",
-    "Banner.css",
-    "editors/index.js",
-    "editors/index.css"
+    "editors/index.js"
   ]
 }

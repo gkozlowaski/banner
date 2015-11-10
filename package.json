@@ -15,7 +15,6 @@
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^3.5.1",
     "express": "^4.13.3",
-    "extract-text-webpack-plugin": "brenoc/extract-text-webpack-plugin",
     "file-loader": "^0.8.1",
     "http-proxy": "^1.11.2",
     "loader-utils": "^0.2.6",

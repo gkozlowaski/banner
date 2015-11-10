@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 var pkg = require('./package.json');
 var meta = require('./meta.json');
@@ -34,12 +33,12 @@ var config = {
         }
       }, {
         test: /\.scss$/,
-        loader: production ?
-          ExtractTextPlugin.extract('style', 'css!sass') :
-          ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
+        loaders: production ?
+          ['style', 'css', 'sass'] :
+          ['style', 'css?sourceMap', 'sass?sourceMap']
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css')
+        loaders: ['style', 'css']
       }, {
         test: /\.svg$/,
         loaders: ['raw-loader', 'svgo-loader?' + JSON.stringify({
@@ -62,11 +61,9 @@ var config = {
   plugins: production ? [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}}),
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new ExtractTextPlugin('[name].css')
+    new webpack.optimize.AggressiveMergingPlugin()
   ] : [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new ExtractTextPlugin('[name].css')
+    new webpack.optimize.OccurenceOrderPlugin()
   ],
 
   externals: {
@@ -105,7 +102,7 @@ var config = {
     configFile: '.eslintrc'
   },
 
-  devtool: production ? null : 'source-map',
+  devtool: 'source-map',
 
   watch: production ? false : true,
 
