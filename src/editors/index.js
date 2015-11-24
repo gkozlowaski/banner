@@ -3,7 +3,7 @@ import BannerEditor from './BannerEditor/BannerEditor';
 
 let components = [
   {
-    name: 'BannerEditor@vtex.storefront-banner',
+    name: 'BannerEditor@vtex.banner',
     constructor: BannerEditor
   }
 ];
