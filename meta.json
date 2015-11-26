@@ -5,6 +5,7 @@
   "description": "Banner",
   "version": "0.2.5",
   "dependencies": {
+    "vtex.editor": "0.x",
     "vtex.storefront": "0"
   }
 }
