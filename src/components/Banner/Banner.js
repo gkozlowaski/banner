@@ -1,12 +1,11 @@
 import React from 'react';
-import { storefront } from 'sdk';
+import { editable } from 'vtex-editor';
 import './Banner.scss';
 import BannerImage from './BannerImage';
 
-@storefront({
+@editable({
   name: 'Banner@vtex.banner',
-  title: 'Banner',
-  editable: true
+  title: 'Banner'
 })
 class Banner extends React.Component {
   render() {
