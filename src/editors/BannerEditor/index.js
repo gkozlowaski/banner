@@ -2,76 +2,44 @@ import React from 'react';
 import './style.scss';
 import BannerImage from 'components/Banner/BannerImage';
 import BannerPlaceholder from './BannerPlaceholder/index.js';
+import SliderGeneralSettings from './SliderGeneralSettings'
+
 
 class BannerEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    let settings = this.props.settings;
+    let settings = this.props.settings ? this.props.settings : {};
+    let images = this.props.images ? this.props.images : [];
+    let sliderSettings = settings.slider ? settings.slider : {};
+
     this.state = {
-      imageUrl: settings ? settings.get('imageUrl') : undefined,
-      link: settings ? settings.get('link') : undefined,
-      altText: settings ? settings.get('altText') : undefined
+      slider: {
+        dots: sliderSettings.dots || true,
+        infinite: sliderSettings.infinite || true,
+        speed: sliderSettings.speed || 500
+      },
+      images
     };
-  }
-
-  changeImageUrl = (e) => {
-    this.setState({ imageUrl: e.target.value });
-  }
-
-  changeLink = (e) => {
-    this.setState({ link: e.target.value });
-  }
-
-  changeAltText = (e) => {
-    this.setState({ altText: e.target.value });
   }
 
   handleSave = () => {
     this.props.saveSettings(this.state);
   }
 
-  onTouchBannerLink = (e) => {
-    e.preventDefault();
+  updateGeneralSettings(slider) {
+    let _state = Object.assign({}, this.state, slider); 
+    this.setState(_state)
   }
 
   render() {
     let ActionBar = this.props.actionBar;
-
-    let currentBanner;
-    if (this.state.imageUrl) {
-      let imageUrl = this.state.imageUrl;
-      let altText = this.state.altText;
-      let link = this.state.link;
-
-      currentBanner = <BannerImage imageUrl={imageUrl} link={link} altText={altText} onTouchBannerLink={this.onTouchBannerLink}/>;
-    } else {
-      currentBanner = <BannerPlaceholder/>;
-    }
+    let settings = this.state.slider;
 
     return (
-      <div className="BannerEditor">
-        <div className="BannerEditor__wrapper">
-          {currentBanner}
-          <form className="BannerEditor__form">
-            <div className="BannerEditor__form-wrapper">
-              <div className="BannerEditor__form-url">
-                <label htmlFor="url">URL da imagem</label>
-                <input id="url" className="form-control" type="url"
-                       value={this.state.imageUrl} onChange={this.changeImageUrl} placeholder="URL"/>
-              </div>
-              <div className="BannerEditor__form-link">
-                <label htmlFor="alt">Link do banner</label>
-                <input id="alt" className="form-control" type="url"
-                      value={this.state.link} onChange={this.changeLink} placeholder="Link do Banner"/>
-              </div>
-              <div className="BannerEditor__form-alt">
-                <label htmlFor="alt">Alt-text da imagem</label>
-                <input id="alt" className="form-control" type="text"
-                      value={this.state.altText} onChange={this.changeAltText} placeholder="Alt-text"/>
-              </div>
-            </div>
-          </form>
+      <div className="v-banner-ed__editor">
+        <div className="v-banner-ed__editor__wrapper">
+          <SliderGeneralSettings settings={settings} updateSettings={this.updateGeneralSettings.bind(this)}  />
         </div>
         <ActionBar onSave={this.handleSave.bind(this)}/>
       </div>

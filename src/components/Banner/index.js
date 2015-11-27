@@ -49,15 +49,17 @@ class Banner extends React.Component {
     let sliderSettings = this.state.settings.slider;
 
     return (
-      <Slider {...sliderSettings}>
-        {images.map(function(image){
-          return (
-            <div>
-              <BannerImage imageUrl={image.url} link={image.link} altText={image.alt}/>
-            </div>
-          )
-        })}
-      </Slider>
+      <div className='banner'>
+        <Slider {...sliderSettings}>
+          {images.map(function(image, i){
+            return (
+              <div key={i}>
+                <BannerImage imageUrl={image.url} link={image.link} altText={image.alt}/>
+              </div>
+            )
+          })}
+        </Slider>
+      </div>
     );
   }
 }
