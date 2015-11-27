@@ -14,39 +14,12 @@ class Banner extends React.Component {
   // MOCK
   constructor(props) {
     super(props);
-    this.state = {
-      settings: {
-        slider: {
-          dots: true,
-          infinite: true,
-          speed: 500,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        },
-        images: [
-          {
-            url: 'http://i.imgur.com/7ou79ca.png',
-            link: 'http://www.google.com',
-            alt: 'Olar ma frend'
-          },
-          {
-            url: 'http://i.imgur.com/7ou79ca.png',
-            link: 'http://www.google.com',
-            alt: 'Olar ma frend'
-          },
-          {
-            url: 'http://i.imgur.com/7ou79ca.png',
-            link: 'http://www.google.com',
-            alt: 'Olar ma frend'
-          }
-        ]
-      }
-    }
+    this.state = this.props.settings.toJS();
   }
 
   render() {
-    let images = this.state.settings.images;
-    let sliderSettings = this.state.settings.slider;
+    let images = this.state.images;
+    let sliderSettings = this.state.slider;
 
     return (
       <div className='banner'>

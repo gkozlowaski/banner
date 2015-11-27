@@ -9,15 +9,15 @@ class BannerEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    let settings = this.props.settings ? this.props.settings : {};
+    let settings = this.props.settings ? this.props.settings.toJS() : {};
 
     let images = settings.images ? settings.images : [];
     let sliderSettings = settings.slider ? settings.slider : {};
 
     this.state = {
       slider: {
-        dots: sliderSettings.dots || true,
-        infinite: sliderSettings.infinite || true,
+        dots: sliderSettings.dots !== undefined ? sliderSettings.dots : true,
+        infinite: sliderSettings.infinite !== undefined ? sliderSettings.infinite : true,
         speed: sliderSettings.speed || 500
       },
       images

@@ -16,6 +16,7 @@ class SliderImagesSettings extends React.Component {
   }
 
   updateImage(image, index) {
+    // TODO - Refactor single image array
     if (this.props.images.length === 0) {
       this.props.updateSettings({images: [image]});
     } else {

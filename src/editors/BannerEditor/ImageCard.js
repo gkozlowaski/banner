@@ -35,8 +35,14 @@ class ImageCard extends React.Component {
   }
 
   updateImage () {
-    this.setState({editing: false});
-    this.props.updateImage(this.state, this.props.index);
+    let editing = { editing: false };
+    let updatedImage = {
+      ...this.state,
+      ...editing
+    }
+
+    this.setState(editing);
+    this.props.updateImage(updatedImage, this.props.index);
   }
 
   render() {
