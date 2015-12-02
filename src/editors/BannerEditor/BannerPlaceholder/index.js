@@ -1,10 +1,11 @@
 import React from 'react';
+import './style.scss';
 
 class BannerPlaceholder extends React.Component {
   render() {
     return (
-      <div className="v-banner-ed__placeholder">
-        <span className="v-banner-ed__placeholder-text">Nenhuma imagem configurada</span>
+      <div className="BannerPlaceholder">
+        <span className="BannerPlaceholder__text">Nenhuma imagem configurada</span>
       </div>
     );
   }

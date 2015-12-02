@@ -1,7 +1,7 @@
 import React from 'react';
 import { editable } from 'vtex-editor';
-import './Banner.scss';
 import BannerImage from './BannerImage';
+import './style.scss';
 
 @editable({
   name: 'Banner@vtex.banner',
@@ -15,8 +15,8 @@ class Banner extends React.Component {
     }
 
     return (
-      <div className="v-banner banner">
-        <BannerImage {...settings}/>
+      <div className="Banner">
+        <BannerImage imageUrl={imageUrl} link={link} altText={altText}/>
       </div>
     );
   }

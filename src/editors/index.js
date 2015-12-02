@@ -1,5 +1,5 @@
 import { actions } from 'sdk';
-import BannerEditor from './BannerEditor/BannerEditor';
+import BannerEditor from './BannerEditor';
 
 let components = [
   {
