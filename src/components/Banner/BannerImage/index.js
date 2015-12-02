@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.scss';
 
 class BannerImage extends React.Component {
   static defaultProps = {
@@ -12,8 +13,8 @@ class BannerImage extends React.Component {
     let onTouchBannerLink = this.props.onTouchBannerLink ? this.props.onTouchBannerLink : null;
 
     return (
-      <a className="v-banner__link" href={link} onTouchTap={onTouchBannerLink} onClick={onTouchBannerLink}>
-        <img className="v-banner__img banner-image" src={this.props.imageUrl} width="100%" alt={this.props.altText}/>
+      <a className="BannerImage" href={link} onTouchTap={onTouchBannerLink} onClick={onTouchBannerLink}>
+        <img src={this.props.imageUrl} width="100%" alt={this.props.altText}/>
       </a>
     );
   }

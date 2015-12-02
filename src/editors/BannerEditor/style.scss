@@ -1,0 +1,50 @@
+@import "~utils/base/base";
+
+.BannerEditor {
+  background-color: $gray-soft;
+  height: 100%;
+  overflow: auto;
+
+
+  &__wrapper {
+    padding: 15px 15px 70px 15px;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+
+  &__add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__add-label {
+    color: $black;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    font-weight: 700;
+  }
+
+  &__form-wrapper {
+    margin-top: 1.5em;
+  }
+
+  &__form {
+    margin: 0em 1em 0em 1em;
+
+    input {
+      margin-bottom: 1em;
+    }
+  }
+
+  &__form-url, &__form-link, &__form-alt {
+    label {
+      font-family: $font-body;
+      color: $black-soft;
+    }
+  }
+}
