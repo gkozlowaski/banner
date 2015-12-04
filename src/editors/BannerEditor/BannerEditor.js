@@ -9,9 +9,9 @@ class BannerEditor extends React.Component {
 
     let settings = this.props.settings;
     this.state = {
-      imageUrl: settings ? settings.get('imageUrl') : null,
-      link: settings ? settings.get('link') : null,
-      altText: settings ? settings.get('altText') : null
+      imageUrl: settings ? settings.get('imageUrl') : undefined,
+      link: settings ? settings.get('link') : undefined,
+      altText: settings ? settings.get('altText') : undefined
     };
   }
 
