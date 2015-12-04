@@ -9,16 +9,14 @@ import BannerImage from './BannerImage';
 })
 class Banner extends React.Component {
   render() {
-    let imageUrl, link, altText;
+    let settings;
     if (this.props.settings) {
-      imageUrl = this.props.settings.get('imageUrl');
-      link = this.props.settings.get('link');
-      altText = this.props.settings.get('altText');
+      settings = this.props.settings.toJS();
     }
 
     return (
       <div className="v-banner banner">
-        <BannerImage imageUrl={imageUrl} link={link} altText={altText}/>
+        <BannerImage {...settings}/>
       </div>
     );
   }
