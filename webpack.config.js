@@ -33,8 +33,8 @@ var config = {
       }, {
         test: /\.scss$/,
         loaders: production ?
-          ['style', 'css', 'sass'] :
-          ['style', 'css?sourceMap', 'sass?sourceMap']
+          ['style', 'css', 'autoprefixer?browsers=last 2 version', 'sass'] :
+          ['style', 'css?sourceMap', 'autoprefixer?browsers=last 2 version', 'sass?sourceMap']
       }, {
         test: /\.css$/,
         loaders: ['style', 'css']
