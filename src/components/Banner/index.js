@@ -15,7 +15,7 @@ class Banner extends React.Component {
     }
 
     return (
-      <div className="Banner">
+      <div className="Banner col-xs-12">
         <BannerImage {...settings}/>
       </div>
     );
