@@ -1,5 +1,5 @@
 import React from 'react';
-import './BannerEditor.scss';
+import './style.scss';
 import BannerImage from 'components/Banner/BannerImage';
 import BannerPlaceholder from './BannerPlaceholder';
 
@@ -50,22 +50,22 @@ class BannerEditor extends React.Component {
     }
 
     return (
-      <div className="v-banner-ed__editor">
-        <div className="v-banner-ed__editor__wrapper">
+      <div className="BannerEditor">
+        <div className="BannerEditor__wrapper">
           {currentBanner}
-          <form className="v-banner-ed__form">
-            <div className="v-banner-ed__form__wrapper">
-              <div className="v-banner-ed__form__url">
+          <form className="BannerEditor__form">
+            <div className="BannerEditor__form-wrapper">
+              <div className="BannerEditor__form-url">
                 <label htmlFor="url">URL da imagem</label>
                 <input id="url" className="form-control" type="url"
                        value={this.state.imageUrl} onChange={this.changeImageUrl} placeholder="URL"/>
               </div>
-              <div className="v-banner-ed__form__link">
+              <div className="BannerEditor__form-link">
                 <label htmlFor="alt">Link do banner</label>
                 <input id="alt" className="form-control" type="url"
                       value={this.state.link} onChange={this.changeLink} placeholder="Link do Banner"/>
               </div>
-              <div className="v-banner-ed__form__alt">
+              <div className="BannerEditor__form-alt">
                 <label htmlFor="alt">Alt-text da imagem</label>
                 <input id="alt" className="form-control" type="text"
                       value={this.state.altText} onChange={this.changeAltText} placeholder="Alt-text"/>

@@ -41,5 +41,7 @@
     "prereleasy": "NODE_ENV=production webpack",
     "postreleasy": "vtex publish"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vtex-css-utils": "^1.1.9"
+  }
 }
