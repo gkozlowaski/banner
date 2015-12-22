@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 import BannerImage from 'components/Banner/BannerImage';
-import BannerPlaceholder from './BannerPlaceholder';
+import BannerPlaceholder from './BannerPlaceholder/index.js';
 
 class BannerEditor extends React.Component {
   constructor(props) {

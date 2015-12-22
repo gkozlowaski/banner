@@ -13,9 +13,11 @@ class BannerImage extends React.Component {
     let onTouchBannerLink = this.props.onTouchBannerLink ? this.props.onTouchBannerLink : null;
 
     return (
-      <a className="BannerImage" href={link} onTouchTap={onTouchBannerLink} onClick={onTouchBannerLink}>
-        <img src={this.props.imageUrl} width="100%" alt={this.props.altText}/>
-      </a>
+      <div className="BannerImage">
+        <a className="BannerImage__link" href={link} onTouchTap={onTouchBannerLink} onClick={onTouchBannerLink}>
+          <img className="BannerImage__img" src={this.props.imageUrl} alt={this.props.altText}/>
+        </a>
+      </div>
     );
   }
 }
