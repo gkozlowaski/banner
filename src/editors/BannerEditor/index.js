@@ -1,9 +1,7 @@
 import React from 'react';
 import './style.scss';
-import BannerImage from 'components/Banner/BannerImage';
-import BannerPlaceholder from './BannerPlaceholder/index.js';
-import SliderGeneralSettings from './SliderGeneralSettings'
-import SliderImagesSettings from './SliderImagesSettings'
+import SliderGeneralSettings from './SliderGeneralSettings';
+import SliderImagesSettings from './SliderImagesSettings';
 
 class BannerEditor extends React.Component {
   constructor(props) {
