@@ -9,7 +9,8 @@ class SliderImagesSettings extends React.Component {
 
     const imagesComponents = [];
     images.forEach((image, i) => {
-      imagesComponents.push(<ImageCard updateImage={this.updateImage.bind(this)} index={i} key={i} {...image} />)
+      imagesComponents.push(<ImageCard updateImage={this.updateImage.bind(this)}
+      removeImage={this.removeImage.bind(this)} index={i} key={i} {...image} />)
     })
 
     return imagesComponents;
@@ -39,6 +40,11 @@ class SliderImagesSettings extends React.Component {
     this.props.updateSettings({images});
   }
 
+  removeImage(index) {
+    this.props.images.splice(index, 1);
+    this.props.updateSettings(this.props.images);
+  }
+
   render() {
     let Images = this.getImageList(this.props.images);
 
@@ -47,11 +53,12 @@ class SliderImagesSettings extends React.Component {
         <div className="v-banner-ed__form__wrapper">
           <h2>Imagens</h2>
           {Images}
-          <button type="button" onClick={this.addImage.bind(this)} className="btn btn-default btn-block btn-lg">+ Adicionar imagem</button>
+          <button type="button" onClick={this.addImage.bind(this)}
+            className="btn btn-default btn-block btn-lg">+ Adicionar imagem
+          </button>
         </div>
       </form>
     );
   }
 }
-
 export default SliderImagesSettings;

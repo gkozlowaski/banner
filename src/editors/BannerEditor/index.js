@@ -25,6 +25,10 @@ class BannerEditor extends React.Component {
   }
 
   handleSave = () => {
+    let images = this.state.images.filter(function(image) {
+      return image.url != null || image.alt != null || image.link != null;
+    });
+    this.state.images = images;
     this.props.saveSettings(this.state);
   }
 
