@@ -1,5 +1,6 @@
 import React from 'react';
 import uploadImage from '../../services/Arquivos';
+import './ImageUpload.scss';
 
 class ImageUpload extends React.Component {
   state = {
@@ -9,6 +10,7 @@ class ImageUpload extends React.Component {
 
   uploadImg = (file) => {
     this.setState({ uploading: true });
+    this.setState({ errorMessage: ''});
 
     uploadImage(file)
     .then((response) => {
@@ -26,13 +28,21 @@ class ImageUpload extends React.Component {
     } else {
       this.setState({
         uploading: false,
-        errorMessage: 'Upload failed ):'
+        errorMessage: 'Falha ao enviar'
       });
     }
   }
 
   uploadImgFail = (fileName, response) => {
-    let errorMessage = response.data === 'File AlreadyExists' ? `$:{response.data}` : '';
+    let errorMessage = '';
+    if (response.status === 404) {
+      errorMessage = 'Falha ao enviar';
+    }
+
+    if (response.data === 'File AlreadyExists') {
+      errorMessage = `$:{response.data}`;
+    }
+
     this.setState({
       uploading: false,
       errorMessage
@@ -72,12 +82,20 @@ class ImageUpload extends React.Component {
           name="file"
         />
         {
-          this.state.errorMessage ?
-            <span>Uploading fail { this.state.errorMessage }</span> : null
+          this.state.errorMessage
+            ? <div style={{'color': 'orangered'}}>
+                <span className="glyphicon glyphicon-exclamation-sign"></span>
+                <span style={{'padding-left': '5px'}}>{ this.state.errorMessage }</span>
+              </div>
+            : null
         }
         {
-          this.state.uploading ?
-            <span>Uploading...</span> : null
+          this.state.uploading
+            ? <div style={{'color': '#337AB7'}}>
+                <span className="glyphicon glyphicon-refresh glyphicon-spin"></span>
+                <span style={{'padding-left': '5px'}}> Enviando</span>
+              </div>
+            : null
         }
       </div>
     );
