@@ -9,8 +9,7 @@ class ImageUpload extends React.Component {
   }
 
   uploadImg = (file) => {
-    this.setState({ uploading: true });
-    this.setState({ errorMessage: ''});
+    this.setState({ uploading: true, errorMessage: '' });
 
     uploadImage(file)
     .then((response) => {
@@ -40,7 +39,7 @@ class ImageUpload extends React.Component {
     }
 
     if (response.data === 'File AlreadyExists') {
-      errorMessage = `$:{response.data}`;
+      errorMessage = `${response.data}`;
     }
 
     this.setState({
@@ -83,17 +82,17 @@ class ImageUpload extends React.Component {
         />
         {
           this.state.errorMessage
-            ? <div style={{'color': 'orangered'}}>
+            ? <div className="error-message" >
                 <span className="glyphicon glyphicon-exclamation-sign"></span>
-                <span style={{'padding-left': '5px'}}>{ this.state.errorMessage }</span>
+                <span className="error-message-text">{ this.state.errorMessage }</span>
               </div>
             : null
         }
         {
           this.state.uploading
-            ? <div style={{'color': '#337AB7'}}>
+            ? <div className="uploading-message" >
                 <span className="glyphicon glyphicon-refresh glyphicon-spin"></span>
-                <span style={{'padding-left': '5px'}}> Enviando</span>
+                <span className="uploading-message-text"> Enviando</span>
               </div>
             : null
         }

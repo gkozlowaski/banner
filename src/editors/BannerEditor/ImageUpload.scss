@@ -22,3 +22,17 @@
         transform: rotate(359deg);
     }
 }
+
+.error-message {
+  color: orangered;
+  &-text {
+    padding-left: 5px;
+  }
+}
+
+.uploading-message {
+  color: #337AB7;
+  &-text {
+    padding-left: 5px;
+  }
+}

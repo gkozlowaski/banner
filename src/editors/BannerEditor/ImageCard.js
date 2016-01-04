@@ -54,15 +54,7 @@ class ImageCard extends React.Component {
         >
           {
             editing ?
-              <span
-                style={
-                  {
-                    fontSize: '120px',
-                    opacity: '0.4',
-                    marginTop: '34px'
-                  }
-                }
-                className="glyphicon glyphicon-upload"
+              <span className="v-banner-ed-img-icon glyphicon glyphicon-upload"
               /> : null
           }
         </div>

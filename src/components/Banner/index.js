@@ -11,10 +11,9 @@ import 'assets/slick/slick-theme.scss';
   title: 'Banner'
 })
 class Banner extends React.Component {
-  // MOCK
   constructor(props) {
     super(props);
-    this.state = this.props.settings.toJS();
+    this.state = this.props.settings ? this.props.settings.toJS() : {};
   }
 
   render() {
