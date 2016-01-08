@@ -59,7 +59,7 @@ class SliderGeneralSettings extends React.Component {
           </div>
 
           <div className="v-banner-ed__form__slider-speed">
-            <h4>Velocidade da transicação em milisegundos</h4>
+            <h4>Velocidade da transição em milisegundos</h4>
             <input id="speed" className="form-control" type="number"
                   value={settings.speed} onChange={this.changeSpeed.bind(this)} />
           </div>
