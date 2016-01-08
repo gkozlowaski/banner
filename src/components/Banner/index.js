@@ -3,8 +3,8 @@ import { editable } from 'vtex-editor';
 import './style.scss';
 import BannerImage from './BannerImage';
 import Slider from 'react-slick';
-import 'assets/slick/slick.scss';
-import 'assets/slick/slick-theme.scss';
+import 'utils/slick/slick.scss';
+import 'utils/slick/slick-theme.scss';
 
 @editable({
   name: 'Banner@vtex.banner',
