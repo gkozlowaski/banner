@@ -18,7 +18,11 @@ class Banner extends React.Component {
 
   render() {
     let images = this.state.images || [];
-    let sliderSettings = this.state.slider;
+    let sliderSettings = this.state.slider || {};
+
+    if (images.length === 0) {
+      sliderSettings.arrows = false;
+    }
 
     return (
       <div className='banner'>
