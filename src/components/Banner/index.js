@@ -1,3 +1,4 @@
+import 'matchmedia-polyfill';
 import React from 'react';
 import { editable } from 'vtex-editor';
 import './style.scss';
