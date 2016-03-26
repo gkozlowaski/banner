@@ -128,7 +128,7 @@ class ImageCard extends React.Component {
             </div>
             {addButton}
           </div>
-          <div className="container v-banner-edit-btn-container">
+          <div className="v-banner-edit-btn-container">
             {
               editing ?
                 null :
