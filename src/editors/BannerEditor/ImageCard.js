@@ -39,7 +39,7 @@ class ImageCard extends React.Component {
     this.props.updateImage(updatedImage, this.props.index);
   }
 
-  handleEditTap = () => {
+  handleEditClick = () => {
     this.setState({ editing: true });
   }
 
@@ -135,7 +135,7 @@ class ImageCard extends React.Component {
                 <button
                   type="button"
                   className="col-xs-12 btn btn-primary v-banner-edit-btn"
-                  onTouchTap={this.handleEditTap}
+                  onClick={this.handleEditClick}
                 >
                   Editar
                 </button>
