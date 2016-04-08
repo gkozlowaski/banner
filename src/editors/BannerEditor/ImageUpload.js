@@ -57,7 +57,7 @@ class ImageUpload extends React.Component {
     this.uploadImg(file);
   }
 
-  handleImageTap = () => {
+  handleImageClick = () => {
     this.fileUpload.click();
   }
 
@@ -68,7 +68,7 @@ class ImageUpload extends React.Component {
         encType="multipart/form-data"
         onSubmit={this.handleSubmit}
       >
-        <div onTouchTap={this.handleImageTap}>
+        <div onClick={this.handleImageClick}>
           { this.props.children }
         </div>
         <input
