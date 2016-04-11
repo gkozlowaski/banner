@@ -1,5 +1,6 @@
 import React from 'react';
 import uploadImage from '../../services/Arquivos';
+import arquivos from '../../../storefront/resources/arquivos.json';
 import './ImageUpload.scss';
 
 class ImageUpload extends React.Component {
@@ -23,7 +24,7 @@ class ImageUpload extends React.Component {
   uploadImgSuccess = (fileName, response) => {
     if (response.status == 201) {
       this.setState({ uploading: false });
-      this.props.updateUrl(`http://vtex-fs-env-beta.elasticbeanstalk.com/${response.headers.location}`);
+      this.props.updateUrl(`${arquivos.url}/${response.headers.location}`);
     } else {
       this.setState({
         uploading: false,

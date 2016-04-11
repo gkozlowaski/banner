@@ -1,16 +1,21 @@
 import axios from 'axios';
-import { stores } from 'sdk';
+import { stores, services } from 'sdk';
+
+const workspace = services.storefront.defaultHeaders['x-vtex-workspace'];
 
 export default function uploadImage(file) {
   const accountName = stores.ContextStore.getState().get('accountName');
-  let uploadImageResource = `/_resources/arquivos@vtex.banner/${accountName}/images/`;
-  let data = new FormData().append('image', file, file.name);
-  let relativePath = uploadImageResource + file.name;
-  let workspace = (`; ${document.cookie}`).split('; vtex_workspace=').pop().split(';').shift();
-  let headers = {
+  const uploadImageResource = `/_resources/arquivos@vtex.banner/${accountName}/images/`;
+
+  const data = new FormData();
+  data.append('image', file);
+
+  const relativePath = uploadImageResource + file.name;
+
+  const headers = {
     'x-vtex-workspace': workspace || 'master',
     'Accept': '*/*'
   };
 
-  return axios.post(relativePath, data, { headers });
+  return axios.put(relativePath, data, { headers });
 }

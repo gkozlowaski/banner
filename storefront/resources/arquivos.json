@@ -1,4 +1,4 @@
 {
-  "url": "http://vtex-fs-env-beta.elasticbeanstalk.com",
+  "url": "http://vtexfs-env-beta.us-east-1.elasticbeanstalk.com",
   "cacheDuration": 60
 }
