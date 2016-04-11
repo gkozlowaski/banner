@@ -1,4 +1,5 @@
 import React from 'react';
+import { stores } from 'sdk';
 import { editable } from 'vtex-editor';
 import './style.scss';
 import BannerImage from './BannerImage';
