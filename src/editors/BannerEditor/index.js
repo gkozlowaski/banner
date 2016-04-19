@@ -6,7 +6,6 @@ import SliderImagesSettings from './SliderImagesSettings';
 class BannerEditor extends React.Component {
   constructor(props) {
     super(props);
-
     let settings = this.props.settings ? this.props.settings.toJS() : {};
 
     let images = settings.images ? settings.images : [];
@@ -52,12 +51,14 @@ class BannerEditor extends React.Component {
     let images = this.state.images;
 
     return (
-      <div className="v-banner-ed__editor">
-        <div className="v-banner-ed__editor__wrapper">
-          <SliderGeneralSettings settings={settings} updateSettings={this.updateGeneralSettings.bind(this)}  />
-          <SliderImagesSettings images={images} updateSettings={this.updateImagesSettings.bind(this)}  />
+      <div>
+        <div className="v-banner-ed__editor">
+          <div className="v-banner-ed__editor__wrapper">
+            <SliderGeneralSettings settings={settings} updateSettings={this.updateGeneralSettings.bind(this)}  />
+            <SliderImagesSettings images={images} updateSettings={this.updateImagesSettings.bind(this)}  />
+          </div>
         </div>
-        <ActionBar onSave={this.handleSave.bind(this)}/>
+        <ActionBar id={this.props.componentProps.id} onSave={this.handleSave.bind(this)}/>
       </div>
     );
   }

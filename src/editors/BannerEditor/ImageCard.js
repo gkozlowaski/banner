@@ -7,7 +7,7 @@ class ImageCard extends React.Component {
   }
 
   updateUrl = (url) => {
-    this.setState({ url });
+    this.setState({ url: url });
   }
 
   updateLink = (e) => {
@@ -106,7 +106,7 @@ class ImageCard extends React.Component {
                 <input
                   type="url"
                   disabled={!editing}
-                  value={this.state.link}
+                  value={this.state.url}
                   onChange={this.updateLink}
                   className="form-control"
                   id="link"

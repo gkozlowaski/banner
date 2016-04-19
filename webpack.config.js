@@ -53,6 +53,10 @@ var config = {
       }, {
         test: /\.(jpg|gif)$/,
         loader: 'file-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json' 
       }
     ]
   },
