@@ -19,6 +19,7 @@ class Banner extends React.Component {
   render() {
     let images = this.state.images || [];
     let sliderSettings = this.state.slider || {};
+    sliderSettings.draggable = false;
 
     if (images.length === 0) {
       sliderSettings.arrows = false;
