@@ -19,7 +19,6 @@ class BannerImage extends React.Component {
           className="BannerImage__link"
           href={link}
           onClick={onTouchBannerLink}
-          onClick={onTouchBannerLink}
         >
           <img
             className="BannerImage__img"
