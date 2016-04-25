@@ -4,6 +4,7 @@ import { editable } from 'vtex-editor';
 import './style.scss';
 import BannerImage from './BannerImage';
 import Slider from 'react-slick';
+import debounce from 'debounce';
 import 'utils/slick/slick.scss';
 import 'utils/slick/slick-theme.scss';
 
@@ -35,6 +36,7 @@ class Banner extends React.Component {
     super(props);
     const settings = this.props.settings ? this.props.settings.toJS() : {};
     this.state = { ...settings, viewport: getViewPort()};
+    this.onResize = debounce(this.onResize, 200);
   }
 
   componentDidMount = () => {
