@@ -43,6 +43,10 @@ class ImageCard extends React.Component {
     this.setState({ editing: true });
   }
 
+  changeViewport = () => {
+    this.setState({ mobile: !this.state.mobile })
+  }
+
   render() {
     let editing = this.state.editing;
     let image = this.state.url ?
@@ -99,6 +103,18 @@ class ImageCard extends React.Component {
               }
             </div>
             <div className={editing ? 'col-xs-12' : 'col-xs-7'}>
+             <div className="form-group">
+                <label className="radio-inline">
+                  <input
+                    type="radio"
+                    id="banner-mobile"
+                    checked={this.state.mobile}
+                    onChange={this.changeViewport}
+                    value={this.state.mobile}
+                  />
+                  Mobile
+                </label>
+              </div>
               <div className="form-group">
                 <label htmlFor="link">
                   Link de destino
