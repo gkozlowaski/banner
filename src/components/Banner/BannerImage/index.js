@@ -1,10 +1,13 @@
 import React from 'react';
 import './style.scss';
+import { stores } from 'sdk';
+
+const Img = stores.ComponentStore.state.getIn(['Img@vtex.storefront-sdk', 'constructor']);
 
 class BannerImage extends React.Component {
   static defaultProps = {
-    imageUrl: 'http://i.imgur.com/7ou79ca.png',
-    link: 'http://www.google.com.br',
+    imageUrl: '//i.imgur.com/7ou79ca.png',
+    link: '//www.google.com.br',
     altText: ''
   }
 
@@ -20,11 +23,11 @@ class BannerImage extends React.Component {
           href={link}
           onClick={onTouchBannerLink}
         >
-          <img
-            className="BannerImage__img"
-            src={this.props.imageUrl}
-            alt={this.props.altText}
-          />
+        <Img
+          className="BannerImage__img"
+          src={this.props.imageUrl}
+          alt={this.props.altText}
+        />
         </a>
       </div>
     );
