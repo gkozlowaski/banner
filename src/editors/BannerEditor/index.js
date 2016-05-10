@@ -51,14 +51,25 @@ class BannerEditor extends React.Component {
     let images = this.state.images;
 
     return (
-      <div>
-        <div className="v-banner-ed__editor">
-          <div className="v-banner-ed__editor__wrapper">
-            <SliderGeneralSettings settings={settings} updateSettings={this.updateGeneralSettings.bind(this)}  />
-            <SliderImagesSettings images={images} updateSettings={this.updateImagesSettings.bind(this)}  />
+      <div className="BannerEditor">
+        <div className="BannerEditor__wrapper">
+          <div className="BannerEditor__editor">
+            <div>
+              <SliderGeneralSettings
+                settings={settings}
+                updateSettings={this.updateGeneralSettings.bind(this)}
+              />
+              <SliderImagesSettings
+                images={images}
+                updateSettings={this.updateImagesSettings.bind(this)}
+              />
+            </div>
           </div>
+          <ActionBar
+            id={this.props.componentProps.id}
+            onSave={this.handleSave.bind(this)}
+          />
         </div>
-        <ActionBar id={this.props.componentProps.id} onSave={this.handleSave.bind(this)}/>
       </div>
     );
   }

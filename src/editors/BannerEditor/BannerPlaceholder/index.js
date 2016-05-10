@@ -5,7 +5,7 @@ class BannerPlaceholder extends React.Component {
   render() {
     return (
       <div className="BannerPlaceholder">
-        <span className="BannerPlaceholder__text">Nenhuma imagem configurada</span>
+        <span className="BannerPlaceholder__text">No image configured</span>
       </div>
     );
   }
