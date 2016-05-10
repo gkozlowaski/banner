@@ -69,13 +69,19 @@ class Banner extends React.Component {
     return (
       <div className='banner'>
         <Slider {...sliderSettings}>
-          {images[index].data.map(function(image, i){
-            return (
-              <div key={i}>
-                <BannerImage imageUrl={image.url} link={image.link} altText={image.alt}/>
-              </div>
-            )
-          })}
+          {
+            images[index].data.map((image, i) => {
+              return (
+                <div key={i}>
+                  <BannerImage
+                    imageUrl={image.url}
+                    link={image.link}
+                    altText={image.alt}
+                  />
+                </div>
+              );
+            })
+          }
         </Slider>
       </div>
     );
