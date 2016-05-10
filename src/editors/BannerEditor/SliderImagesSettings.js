@@ -4,7 +4,11 @@ import ImageCard from './ImageCard';
 class SliderImagesSettings extends React.Component {
   getImageList(images) {
     if (!images.length) {
-      return ( <p>Nenhuma imagem cadastrada</p> )
+      return (
+        <p className="BannerEditor__title">
+          No image uploaded
+        </p>
+      );
     }
 
     const imagesComponents = [];
@@ -49,12 +53,18 @@ class SliderImagesSettings extends React.Component {
     let Images = this.getImageList(this.props.images);
 
     return (
-      <form className="v-banner-ed__form">
-        <div className="v-banner-ed__form__wrapper">
-          <h2>Imagens</h2>
-          {Images}
-          <button type="button" onClick={this.addImage.bind(this)}
-            className="btn btn-default btn-block btn-lg">+ Adicionar imagem
+      <form className="BannerEditor__form">
+        <div className="BannerEditor__form-wrapper">
+          <p className="BannerEditor__title--big">
+            Images
+          </p>
+          { Images }
+          <button
+            type="button"
+            onClick={this.addImage.bind(this)}
+            className="btn btn-default btn-block btn-lg"
+          >
+            + Add Image
           </button>
         </div>
       </form>

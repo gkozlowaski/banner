@@ -74,14 +74,14 @@ class ImageCard extends React.Component {
               className="col-xs-12 btn btn-primary"
               style={{ marginBottom: '5px' }}
             >
-              Salvar
+              Save
             </button>
             <button
               type="button"
               onClick={this.removeImage}
               className="col-xs-12 btn btn-danger"
             >
-              Excluir
+              Delete
             </button>
           </div>
         ) : null;
@@ -117,7 +117,7 @@ class ImageCard extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor="link">
-                  Link de destino
+                  Destination Link
                 </label>
                 <input
                   type="url"
@@ -130,7 +130,7 @@ class ImageCard extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor="alt">
-                  Alt da imagem
+                  Image Alt-text
                 </label>
                 <input
                   type="text"
@@ -153,7 +153,7 @@ class ImageCard extends React.Component {
                   className="col-xs-12 btn btn-primary v-banner-edit-btn"
                   onClick={this.handleEditClick}
                 >
-                  Editar
+                  Edit
                 </button>
             }
           </div>

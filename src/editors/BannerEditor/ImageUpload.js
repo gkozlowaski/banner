@@ -93,7 +93,7 @@ class ImageUpload extends React.Component {
           this.state.uploading
             ? <div className="uploading-message" >
                 <span className="glyphicon glyphicon-refresh glyphicon-spin"></span>
-                <span className="uploading-message-text"> Enviando</span>
+                <span className="uploading-message-text"> Uploading</span>
               </div>
             : null
         }
