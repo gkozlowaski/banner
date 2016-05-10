@@ -3,6 +3,9 @@
   "vendor": "vtex",
   "title": "Banner",
   "description": "Banner",
+  "categories": [
+    "appearance"
+  ],
   "version": "0.7.0",
   "dependencies": {
     "vtex.editor": "0.x",
