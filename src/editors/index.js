@@ -3,7 +3,7 @@ import BannerEditor from './BannerEditor';
 
 let components = [
   {
-    name: 'BannerEditor@vtex.banner',
+    name: 'BannerEditor@kozlowaski.banner',
     constructor: BannerEditor
   }
 ];
