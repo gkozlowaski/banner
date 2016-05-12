@@ -3,7 +3,7 @@ import Banner from './Banner';
 
 let components = [
   {
-    name: 'Banner@vtex.banner',
+    name: 'Banner@kozlowaski.banner',
     constructor: Banner
   }
 ];
